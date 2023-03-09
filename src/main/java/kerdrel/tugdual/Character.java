@@ -1,2 +1,4 @@
-package kerdrel.tugdual;public class Character {
+package kerdrel.tugdual;
+
+public abstract class Character {
 }

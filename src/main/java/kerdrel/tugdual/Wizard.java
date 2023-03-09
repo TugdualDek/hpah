@@ -1,3 +1,4 @@
+package kerdrel.tugdual;
 
 import java.util.*;
 
@@ -14,8 +15,8 @@ public class Wizard extends Character {
   private Pet pet;
   private Wand wand;
   private House house;
-  private List knownSpells;
-  private List potions;
+  private ArrayList<Spell> knownSpells;
+  private ArrayList<Potion> potions;
   
   //
   // Constructors
@@ -79,35 +80,28 @@ public class Wizard extends Character {
     return house;
   }
 
-  /**
-   * Set the value of knownSpells
-   * @param newVar the new value of knownSpells
-   */
-  public void setKnownSpells (List newVar) {
-    knownSpells = newVar;
+  public void setKnownSpells () {
+
   }
 
   /**
    * Get the value of knownSpells
    * @return the value of knownSpells
    */
-  public List getKnownSpells () {
+  public ArrayList<Spell> getKnownSpells () {
     return knownSpells;
   }
 
-  /**
-   * Set the value of potions
-   * @param newVar the new value of potions
-   */
-  public void setPotions (List newVar) {
-    potions = newVar;
+
+  public void setPotions () {
+
   }
 
   /**
    * Get the value of potions
    * @return the value of potions
    */
-  public List getPotions () {
+  public ArrayList<Potion> getPotions () {
     return potions;
   }
 

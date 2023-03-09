@@ -1,4 +1,4 @@
-
+package kerdrel.tugdual;
 
 /**
  * Class Boss

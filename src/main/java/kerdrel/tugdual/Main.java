@@ -1,4 +1,6 @@
-package kerdrel.tugdual;public class Main {
+package kerdrel.tugdual;
+
+public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }
