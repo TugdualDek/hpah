@@ -1,6 +1,6 @@
 package kerdrel.tugdual;
 
-import lombok.Setter;
+import kerdrel.tugdual.characters.Character;
 
 import java.util.*;
 

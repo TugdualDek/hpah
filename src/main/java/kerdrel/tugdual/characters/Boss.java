@@ -1,4 +1,4 @@
-package kerdrel.tugdual;
+package kerdrel.tugdual.characters;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,6 @@ public class Boss extends AbstractEnemy {
   // Fields
   //
 
-
   private @Getter @Setter int test;
   
   //
@@ -23,7 +22,6 @@ public class Boss extends AbstractEnemy {
   //
   // Methods
   //
-
 
   //
   // Accessor methods
