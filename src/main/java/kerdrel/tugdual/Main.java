@@ -1,6 +1,7 @@
 package kerdrel.tugdual;
 
 import kerdrel.tugdual.characters.Boss;
+import kerdrel.tugdual.tools.SafeScanner;
 import kerdrel.tugdual.wizarding.House;
 import kerdrel.tugdual.wizarding.Pet;
 
@@ -10,10 +11,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        Boss test = new Boss();
-        test.setTest(1);
-        System.out.println(test.getTest());
+        System.out.println("Hello to Harry Potter At Home!");
+
+        SafeScanner scanner = new SafeScanner();
+
+        //Boss test = new Boss();
+        //test.setTest(1);
+        //System.out.println(test.getTest());
         SortingHat hat = new SortingHat();
         House house = new House(hat.getRandomHouse());
         System.out.println("Votre maison : " + house.getHouse());
@@ -28,7 +32,7 @@ public class Main {
         System.out.println("3 - Cat");
         System.out.println("4 - Toad");
 
-        selection = input.nextInt();
+        selection = scanner.nextIntInRange(1, 4);
 
         Pet pet;
         switch (selection) {
