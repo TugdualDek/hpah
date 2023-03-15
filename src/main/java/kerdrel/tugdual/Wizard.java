@@ -1,6 +1,10 @@
 package kerdrel.tugdual;
 
 import kerdrel.tugdual.characters.Character;
+import kerdrel.tugdual.spells.Spell;
+import kerdrel.tugdual.wizarding.House;
+import kerdrel.tugdual.wizarding.Pet;
+import kerdrel.tugdual.wizarding.Wand;
 
 import java.util.*;
 
@@ -14,16 +18,22 @@ public class Wizard extends Character {
   // Fields
   //
 
+  private float hp;
+  private float shield;
   private Pet pet;
   private Wand wand;
   private House house;
-  private ArrayList<Spell> knownSpells;
-  private ArrayList<Potion> potions;
+  private ArrayList<Spell> knownSpells = new ArrayList<>();
+  private ArrayList<Potion> potions = new ArrayList<>();
   
   //
   // Constructors
   //
-  public Wizard () { };
+  public Wizard (Pet pet, Wand wand, House house) {
+    this.pet = pet;
+    this.wand = wand;
+    this.house = house;
+  };
   
   //
   // Methods
@@ -82,29 +92,45 @@ public class Wizard extends Character {
     return house;
   }
 
-  public void setKnownSpells () {
-
+  public void setKnownSpells (Spell spell) {
+    this.knownSpells.add(spell);
   }
 
   /**
    * Get the value of knownSpells
    * @return the value of knownSpells
    */
-  public ArrayList<Spell> getKnownSpells () {
-    return knownSpells;
+  public Spell[] getKnownSpells () {
+    return knownSpells.toArray(new Spell[knownSpells.size()]);
   }
 
 
-  public void setPotions () {
-
+  public void setPotions (Potion potion) {
+    this.potions.add(potion);
   }
 
   /**
    * Get the value of potions
    * @return the value of potions
    */
-  public ArrayList<Potion> getPotions () {
-    return potions;
+  public Potion[] getPotions () {
+    return potions.toArray(new Potion[potions.size()]);
+  }
+
+  public float getHp() {
+    return hp;
+  }
+
+  public void setHp(float hp) {
+    this.hp = hp;
+  }
+
+  public float getShield() {
+    return shield;
+  }
+
+  public void setShield(float shield) {
+    this.shield = shield;
   }
 
   //

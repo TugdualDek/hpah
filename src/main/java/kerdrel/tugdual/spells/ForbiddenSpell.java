@@ -1,4 +1,4 @@
-package kerdrel.tugdual;
+package kerdrel.tugdual.spells;
 
 /**
  * Class ForbiddenSpell

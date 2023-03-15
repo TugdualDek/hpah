@@ -1,12 +1,9 @@
-package kerdrel.tugdual;
-
-import java.util.*;
-
+package kerdrel.tugdual.spells;
 
 /**
- * Class AbstractSpell
+ * Class Spell
  */
-abstract public class AbstractSpell {
+public class Spell extends AbstractSpell {
 
   //
   // Fields
@@ -16,7 +13,7 @@ abstract public class AbstractSpell {
   //
   // Constructors
   //
-  public AbstractSpell () { };
+  public Spell () { };
   
   //
   // Methods

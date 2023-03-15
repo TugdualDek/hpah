@@ -1,4 +1,7 @@
-package kerdrel.tugdual;
+package kerdrel.tugdual.wizarding;
+
+import lombok.Setter;
+import lombok.Getter;
 
 /**
  * Class House
@@ -8,12 +11,14 @@ public class House {
   //
   // Fields
   //
-
+  private @Getter @Setter String house;
   
   //
   // Constructors
   //
-  public House () { };
+  public House (String house) {
+    this.house = house;
+  };
   
   //
   // Methods

@@ -1,4 +1,4 @@
-package kerdrel.tugdual;
+package kerdrel.tugdual.wizarding;
 
 /**
  * Class Wand
@@ -15,7 +15,10 @@ public class Wand {
   //
   // Constructors
   //
-  public Wand () { };
+  public Wand (Core core, int size) {
+    this.core = core;
+    this.size = size;
+  };
   
   //
   // Methods
@@ -28,10 +31,10 @@ public class Wand {
 
   /**
    * Set the value of size
-   * @param newVar the new value of size
+   * @param size the new value of size
    */
-  public void setSize (int newVar) {
-    size = newVar;
+  public void setSize (int size) {
+    this.size = size;
   }
 
   /**
@@ -44,10 +47,10 @@ public class Wand {
 
   /**
    * Set the value of core
-   * @param newVar the new value of core
+   * @param core the new value of core
    */
-  public void setCore (Core newVar) {
-    core = newVar;
+  public void setCore (Core core) {
+    this.core = core;
   }
 
   /**
