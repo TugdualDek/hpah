@@ -1,10 +1,12 @@
-package kerdrel.tugdual;
+package kerdrel.tugdual.characters;
 
+import kerdrel.tugdual.Potion;
 import kerdrel.tugdual.characters.Character;
 import kerdrel.tugdual.spells.Spell;
 import kerdrel.tugdual.wizarding.House;
 import kerdrel.tugdual.wizarding.Pet;
 import kerdrel.tugdual.wizarding.Wand;
+import lombok.Builder;
 
 import java.util.*;
 
@@ -12,14 +14,16 @@ import java.util.*;
 /**
  * Class Wizard
  */
+
 public class Wizard extends Character {
 
   //
   // Fields
   //
-
-  private float hp;
-  private float shield;
+  private String name;
+  private float health;
+  private float defense;
+  private float attackPower;
   private Pet pet;
   private Wand wand;
   private House house;
@@ -29,11 +33,18 @@ public class Wizard extends Character {
   //
   // Constructors
   //
-  public Wizard (Pet pet, Wand wand, House house) {
+  @Builder
+  public Wizard (Pet pet, Wand wand, House house, float health, float defense, String name, float attackPower)
+  {
+    super(name, health, defense, attackPower);
     this.pet = pet;
     this.wand = wand;
     this.house = house;
-  };
+    this.defense = defense;
+    this.health = health;
+    this.name = name;
+    this.attackPower = attackPower;
+  }
   
   //
   // Methods
@@ -43,6 +54,22 @@ public class Wizard extends Character {
   //
   // Accessor methods
   //
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public float getAttackPower() {
+    return attackPower;
+  }
+
+  public void setAttackPower(float attackPower) {
+    this.attackPower = attackPower;
+  }
 
   /**
    * Set the value of pet
@@ -118,11 +145,11 @@ public class Wizard extends Character {
   }
 
   public float getHp() {
-    return hp;
+    return health;
   }
 
   public void setHp(float hp) {
-    this.hp = hp;
+    this.health = hp;
   }
 
   public float getShield() {

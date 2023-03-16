@@ -8,10 +8,10 @@ import lombok.Getter;
  */
 public enum Pet {
 
-  OWL("Owl"),
+  OWL("Hibou"),
   RAT("Rat"),
-  CAT("Cat"),
-  TOAD("Toad");
+  CAT("Chat"),
+  TOAD("Crapaud");
 
   //
   // Fields

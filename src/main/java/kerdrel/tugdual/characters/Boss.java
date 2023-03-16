@@ -7,17 +7,18 @@ import lombok.Setter;
  * Class Boss
  */
 public class Boss extends AbstractEnemy {
+  public Boss(String name, float health, float shield, float attackPower) {
+    super(name, health, shield, attackPower);
+  }
 
   //
   // Fields
   //
 
-  private @Getter @Setter int test;
   
   //
   // Constructors
   //
-  public Boss () { };
   
   //
   // Methods

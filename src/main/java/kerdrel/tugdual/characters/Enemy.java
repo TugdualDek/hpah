@@ -4,6 +4,9 @@ package kerdrel.tugdual.characters;
  * Class Enemy
  */
 public class Enemy extends AbstractEnemy {
+  public Enemy(String name, float health, float shield, float attackPower) {
+    super(name, health, shield, attackPower);
+  }
 
   //
   // Fields
@@ -13,7 +16,6 @@ public class Enemy extends AbstractEnemy {
   //
   // Constructors
   //
-  public Enemy () { };
   
   //
   // Methods
