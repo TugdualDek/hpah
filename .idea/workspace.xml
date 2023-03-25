@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="refactor levels">
+    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="Make it English !">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/ressources/Levels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/ressources/Levels.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Pet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,7 @@
       <workItem from="1678985754449" duration="5017000" />
       <workItem from="1679237375725" duration="4178000" />
       <workItem from="1679729053337" duration="20000" />
-      <workItem from="1679753463606" duration="6744000" />
+      <workItem from="1679753463606" duration="7620000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -175,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679759219320</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Make it English !">
+      <created>1679760294724</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1679760294724</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +209,7 @@
     <MESSAGE value="beginning of levels and game logic" />
     <MESSAGE value="printing text from each levels" />
     <MESSAGE value="refactor levels" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor levels" />
+    <MESSAGE value="Make it English !" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make it English !" />
   </component>
 </project>

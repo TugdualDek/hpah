@@ -71,6 +71,8 @@ public class GameLogic {
 
         console.log("A wand of type " + wand.getCore().getName() + " and of " + wand.getSize() + "cm has chosen you !");
 
+        scanner.anythingToContinue();
+
         player = Wizard.builder().name(name).health(100).shield(100).attackPower(10).pet(pet).wand(wand).house(house).build();
 
         isRunning = true;
@@ -96,14 +98,14 @@ public class GameLogic {
 
         //we will check the actual level and if the boss is dead, we will go to the next level
         checkLevel();
+        console.clearConsole();
 
         //we print the texts from the level
         for (String text : currentLevel.getText()) {
-            console.clearConsole();
             console.log(text);
-            scanner.anythingToContinue();
         }
 
+        scanner.anythingToContinue();
         //we fight against the boss of the level
         battle(currentLevel.getBoss());
 
@@ -184,7 +186,7 @@ public class GameLogic {
 
                 console.clearConsole();
 
-                if (Math.random() * 10 + 1 <= 3.5) {
+                if (Math.random() * 10 + 1 <= 3.5) { // 35% chance to run away
                     console.printHeading("You ran away from the " + boss.getName() + " !");
                     scanner.anythingToContinue();
                     break;
