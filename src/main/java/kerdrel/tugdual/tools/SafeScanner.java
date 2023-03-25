@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class SafeScanner {
 
     private Scanner sc;
-    public static final boolean DEBUG = true;
 
     public SafeScanner(){
         this.sc = new Scanner(System.in);
@@ -57,12 +56,6 @@ public class SafeScanner {
         } else {
             System.out.println("Yes/no response required. (y/n, Yeah, Yep, Nope, No)");
             return nextYesNoAnswer ();
-        }
-    }
-
-    public void clearScreen () {
-        for(int i = 0; i<100; i++){
-            System.out.println();
         }
     }
 }

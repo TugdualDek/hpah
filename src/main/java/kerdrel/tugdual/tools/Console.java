@@ -15,4 +15,14 @@ public class Console {
         printSeparator(30);
     }
 
+    public void clearConsole () {
+        for(int i = 0; i<100; i++){
+            System.out.println();
+        }
+    }
+
+    public void log(String text) {
+        System.out.println(text);
+    }
+
 }

@@ -15,7 +15,7 @@ public enum Core {
   //
   // Fields
   //
-  private @Getter @Setter String name;
+  private @Getter String name;
 
   
   //

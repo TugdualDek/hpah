@@ -10,12 +10,14 @@ public abstract class Character {
 
     protected String name;
     protected float health;
+    protected float maxHealth;
     protected float shield;
     protected float attackPower;
 
-    public Character(String name, float health, float shield, float attackPower) {
+    public Character(String name, float maxHealth, float shield, float attackPower) {
         this.name = name;
-        this.health = health;
+        this.maxHealth = maxHealth;
+        this.health = maxHealth;
         this.shield = shield;
         this.attackPower = attackPower;
     }

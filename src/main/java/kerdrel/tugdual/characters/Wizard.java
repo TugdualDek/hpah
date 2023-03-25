@@ -53,23 +53,6 @@ public class Wizard extends Character {
     //
     // Accessor methods
     //
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public float getAttackPower() {
-        return attackPower;
-    }
-
-    public void setAttackPower(float attackPower) {
-        this.attackPower = attackPower;
-    }
-
     /**
      * Set the value of pet
      *
@@ -151,21 +134,7 @@ public class Wizard extends Character {
         return potions.toArray(new Potion[potions.size()]);
     }
 
-    public float getHp() {
-        return health;
-    }
 
-    public void setHp(float hp) {
-        this.health = hp;
-    }
-
-    public float getShield() {
-        return shield;
-    }
-
-    public void setShield(float shield) {
-        this.shield = shield;
-    }
 
     //
     // Other methods
