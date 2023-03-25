@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="beginning of levels and game logic">
+    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="refactor levels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Pet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +110,7 @@
       <workItem from="1678985754449" duration="5017000" />
       <workItem from="1679237375725" duration="4178000" />
       <workItem from="1679729053337" duration="20000" />
-      <workItem from="1679753463606" duration="5400000" />
+      <workItem from="1679753463606" duration="6744000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -159,7 +161,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679758608746</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="printing text from each levels">
+      <created>1679758948646</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679758948646</updated>
+    </task>
+    <task id="LOCAL-00009" summary="refactor levels">
+      <created>1679759219320</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1679759219320</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +200,8 @@
     <MESSAGE value="lot of changes" />
     <MESSAGE value="refactoring code" />
     <MESSAGE value="beginning of levels and game logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="beginning of levels and game logic" />
+    <MESSAGE value="printing text from each levels" />
+    <MESSAGE value="refactor levels" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor levels" />
   </component>
 </project>
