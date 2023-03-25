@@ -38,35 +38,14 @@ public class SafeScanner {
         return response;
     }
 
-    public double nextDoubleSafe () {
-        System.out.println("Please input a double/floating point number.");
-        double response = 0.0;
-        try {
-            response = this.sc.nextDouble();
-        } catch (InputMismatchException e) {
-            System.out.println("You did not enter a double.");
-            this.sc.next();
-            return nextDoubleSafe();
-        }
-        return response;
+    public void anythingToContinue(){
+        System.out.println("\nEnter anything to continue ...");
+        this.sc.next();
     }
 
     public String nextStringSafe () {
         System.out.println("Please input a string");
         return this.sc.next();
-    }
-
-    public boolean nextBoolSafe () {
-        System.out.println("Please input a boolean value. (\"true\" or \"false\")");
-        boolean response = true;
-        try {
-            response = this.sc.nextBoolean();
-        } catch (InputMismatchException e) {
-            System.out.println("You did not enter a boolean.");
-            this.sc.next();
-            nextBoolSafe();
-        }
-        return response;
     }
 
     public boolean nextYesNoAnswer () {
@@ -81,20 +60,9 @@ public class SafeScanner {
         }
     }
 
-    public static void clearScreen () {
-        if (!DEBUG) {
-            String systemInfo = System.getProperty("os.name");
-            if (systemInfo.contains("Windows")) {
-                try {
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                } catch (Exception exception) {
-                    System.out.println(exception);
-                }
-            } else if (systemInfo.contains("Mac")) {
-                System.out.print("\033[H\033[2J"); //This is safe in windows, it just doesn't clear the screen.
-            } else {
-                System.out.println("Unable to determine system info. Unable to clear screen.");
-            }
+    public void clearScreen () {
+        for(int i = 0; i<100; i++){
+            System.out.println();
         }
     }
 }

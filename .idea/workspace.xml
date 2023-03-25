@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="safeScanner for project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/ressources/text.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/ReadJson.java" afterDir="false" />
+    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="lot of changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Wizard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/AbstractEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/AbstractEnemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Wizard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/ressources/text.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/ressources/text.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/Json.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Pet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/ReadJson.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/SafeScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/SafeScanner.java" afterDir="false" />
     </list>
-    <list id="f97fca58-7836-4ea1-b045-74b7f073a92c" name="Changes by tihmz" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,6 +69,19 @@
   }
 }</component>
   <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.Main" />
+      <module name="hpah" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kerdrel.tugdual.wizarding.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -83,6 +93,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -99,7 +114,10 @@
       <workItem from="1678885422937" duration="4439000" />
       <workItem from="1678904656705" duration="839000" />
       <workItem from="1678972160697" duration="6068000" />
-      <workItem from="1678985754449" duration="4657000" />
+      <workItem from="1678985754449" duration="5017000" />
+      <workItem from="1679237375725" duration="4178000" />
+      <workItem from="1679729053337" duration="20000" />
+      <workItem from="1679753463606" duration="921000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -129,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678905434574</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="lot of changes">
+      <created>1679001819467</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679001819468</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +176,7 @@
     <MESSAGE value="how to use Lombok" />
     <MESSAGE value="create packages" />
     <MESSAGE value="safeScanner for project" />
-    <option name="LAST_COMMIT_MESSAGE" value="safeScanner for project" />
+    <MESSAGE value="lot of changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="lot of changes" />
   </component>
 </project>

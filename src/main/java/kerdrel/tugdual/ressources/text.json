@@ -1,5 +1,12 @@
-{
-  "beginning" : {
-    "text" : "Bonjour et bienvenue dans Harry Potter At Home !\n Comment vous appelez-vous ?\n"
+[
+  {
+    "name": "premier",
+    "boss" : {
+      "name" : "test",
+      "health": 100,
+      "shield": 20,
+      "attackPower" : 5
+    },
+    "text" : "voici du texte"
   }
-}
+]

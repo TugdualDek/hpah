@@ -24,10 +24,8 @@ public abstract class Character {
         return health <= 0;
     }
 
-    public void attack(Character target){
-        float damage = Math.max(0, attackPower - target.shield);
-        target.takeDamage(damage);
-    }
+    public abstract int attack();
+    public abstract int defend();
 
     private void takeDamage(float damage) {
         health -= damage;

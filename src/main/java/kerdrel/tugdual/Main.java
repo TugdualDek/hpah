@@ -1,19 +1,14 @@
 package kerdrel.tugdual;
 
-import kerdrel.tugdual.characters.Boss;
-import kerdrel.tugdual.characters.Wizard;
 import kerdrel.tugdual.tools.SafeScanner;
-import kerdrel.tugdual.wizarding.Core;
-import kerdrel.tugdual.wizarding.House;
-import kerdrel.tugdual.wizarding.Pet;
-import kerdrel.tugdual.wizarding.Wand;
+import kerdrel.tugdual.wizarding.*;
 
-import java.util.Arrays;
+import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Bienvenue à Poudlard !");
 
         SafeScanner scanner = new SafeScanner();
@@ -25,6 +20,8 @@ public class Main {
         SortingHat hat = new SortingHat();
         House house = new House(hat.getRandomHouse());
         System.out.println("Le choipeau magique a decidé, et ce n'était pas facile, mais votre maison est desormais " + house.getHouse());
+
+        scanner.clearScreen();
 
         int selection;
         Scanner input = new Scanner(System.in);

@@ -1,7 +1,6 @@
 package kerdrel.tugdual.characters;
 
-import kerdrel.tugdual.Potion;
-import kerdrel.tugdual.characters.Character;
+import kerdrel.tugdual.wizarding.Potion;
 import kerdrel.tugdual.spells.Spell;
 import kerdrel.tugdual.wizarding.House;
 import kerdrel.tugdual.wizarding.Pet;
@@ -14,154 +13,162 @@ import java.util.*;
 /**
  * Class Wizard
  */
-
 public class Wizard extends Character {
 
-  //
-  // Fields
-  //
-  private String name;
-  private float health;
-  private float defense;
-  private float attackPower;
-  private Pet pet;
-  private Wand wand;
-  private House house;
-  private ArrayList<Spell> knownSpells = new ArrayList<>();
-  private ArrayList<Potion> potions = new ArrayList<>();
-  
-  //
-  // Constructors
-  //
-  @Builder
-  public Wizard (Pet pet, Wand wand, House house, float health, float defense, String name, float attackPower)
-  {
-    super(name, health, defense, attackPower);
-    this.pet = pet;
-    this.wand = wand;
-    this.house = house;
-    this.defense = defense;
-    this.health = health;
-    this.name = name;
-    this.attackPower = attackPower;
-  }
-  
-  //
-  // Methods
-  //
+    //
+    // Fields
+    //
+
+    private Pet pet;
+    private Wand wand;
+    private House house;
+    private ArrayList<Spell> knownSpells = new ArrayList<>();
+    private ArrayList<Potion> potions = new ArrayList<>();
+
+    //
+    // Constructors
+    //
+
+    @Builder
+    public Wizard(String name, float health, float shield, float attackPower, Pet pet, Wand wand, House house) {
+        super(name, health, shield, attackPower);
+        this.pet = pet;
+        this.wand = wand;
+        this.house = house;
+    }
 
 
-  //
-  // Accessor methods
-  //
+    //
+    // Methods
+    //
+    public int attack() {
+        return 0;
+    }
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public float getAttackPower() {
-    return attackPower;
-  }
-
-  public void setAttackPower(float attackPower) {
-    this.attackPower = attackPower;
-  }
-
-  /**
-   * Set the value of pet
-   * @param newVar the new value of pet
-   */
-  public void setPet (Pet newVar) {
-    pet = newVar;
-  }
-
-  /**
-   * Get the value of pet
-   * @return the value of pet
-   */
-  public Pet getPet () {
-    return pet;
-  }
-
-  /**
-   * Set the value of wand
-   * @param newVar the new value of wand
-   */
-  public void setWand (Wand newVar) {
-    wand = newVar;
-  }
-
-  /**
-   * Get the value of wand
-   * @return the value of wand
-   */
-  public Wand getWand () {
-    return wand;
-  }
-
-  /**
-   * Set the value of house
-   * @param newVar the new value of house
-   */
-  public void setHouse (House newVar) {
-    house = newVar;
-  }
-
-  /**
-   * Get the value of house
-   * @return the value of house
-   */
-  public House getHouse () {
-    return house;
-  }
-
-  public void setKnownSpells (Spell spell) {
-    this.knownSpells.add(spell);
-  }
-
-  /**
-   * Get the value of knownSpells
-   * @return the value of knownSpells
-   */
-  public Spell[] getKnownSpells () {
-    return knownSpells.toArray(new Spell[knownSpells.size()]);
-  }
+    public int defend() {
+        return 0;
+    }
 
 
-  public void setPotions (Potion potion) {
-    this.potions.add(potion);
-  }
+    //
+    // Accessor methods
+    //
 
-  /**
-   * Get the value of potions
-   * @return the value of potions
-   */
-  public Potion[] getPotions () {
-    return potions.toArray(new Potion[potions.size()]);
-  }
+    public String getName() {
+        return name;
+    }
 
-  public float getHp() {
-    return health;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void setHp(float hp) {
-    this.health = hp;
-  }
+    public float getAttackPower() {
+        return attackPower;
+    }
 
-  public float getShield() {
-    return shield;
-  }
+    public void setAttackPower(float attackPower) {
+        this.attackPower = attackPower;
+    }
 
-  public void setShield(float shield) {
-    this.shield = shield;
-  }
+    /**
+     * Set the value of pet
+     *
+     * @param newVar the new value of pet
+     */
+    public void setPet(Pet newVar) {
+        pet = newVar;
+    }
 
-  //
-  // Other methods
-  //
+    /**
+     * Get the value of pet
+     *
+     * @return the value of pet
+     */
+    public Pet getPet() {
+        return pet;
+    }
+
+    /**
+     * Set the value of wand
+     *
+     * @param newVar the new value of wand
+     */
+    public void setWand(Wand newVar) {
+        wand = newVar;
+    }
+
+    /**
+     * Get the value of wand
+     *
+     * @return the value of wand
+     */
+    public Wand getWand() {
+        return wand;
+    }
+
+    /**
+     * Set the value of house
+     *
+     * @param newVar the new value of house
+     */
+    public void setHouse(House newVar) {
+        house = newVar;
+    }
+
+    /**
+     * Get the value of house
+     *
+     * @return the value of house
+     */
+    public House getHouse() {
+        return house;
+    }
+
+    public void setKnownSpells(Spell spell) {
+        this.knownSpells.add(spell);
+    }
+
+    /**
+     * Get the value of knownSpells
+     *
+     * @return the value of knownSpells
+     */
+    public Spell[] getKnownSpells() {
+        return knownSpells.toArray(new Spell[knownSpells.size()]);
+    }
+
+
+    public void setPotions(Potion potion) {
+        this.potions.add(potion);
+    }
+
+    /**
+     * Get the value of potions
+     *
+     * @return the value of potions
+     */
+    public Potion[] getPotions() {
+        return potions.toArray(new Potion[potions.size()]);
+    }
+
+    public float getHp() {
+        return health;
+    }
+
+    public void setHp(float hp) {
+        this.health = hp;
+    }
+
+    public float getShield() {
+        return shield;
+    }
+
+    public void setShield(float shield) {
+        this.shield = shield;
+    }
+
+    //
+    // Other methods
+    //
 
 }
