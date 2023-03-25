@@ -106,16 +106,23 @@ public class GameLogic {
     public void continueJourney(){
 
         checkLevel();
+        for(String text : currentLevel.getText()){
+            console.clearConsole();
+            console.log(text);
+            scanner.anythingToContinue();
+        }
         battle(currentLevel.getBoss());
+
         scanner.anythingToContinue();
 
     }
 
     private void battle(Boss boss) {
         while(true){
+
             console.clearConsole();
             console.printHeading(boss.getName() + "\nHP: " + boss.getHealth() + "/" + boss.getMaxHealth());
-            console.printHeading(player.getName() + "\nHP: " + player.getHp() + "/" + player.getMaxHealth());
+            console.printHeading(player.getName() + "\nHP: " + player.getHealth() + "/" + player.getMaxHealth());
             System.out.println("Choose an action :");
             console.printSeparator(20);
             System.out.println("(1) Attack\n(2) Potion\n(3) Run");
