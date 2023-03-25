@@ -1,4 +1,4 @@
-package kerdrel.tugdual.tools;
+package kerdrel.tugdual.ressources;
 
 import kerdrel.tugdual.characters.Boss;
 import lombok.Getter;
