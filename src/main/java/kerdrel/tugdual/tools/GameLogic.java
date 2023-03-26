@@ -28,6 +28,7 @@ public class GameLogic {
     //
     // Constructors
     //
+
     public GameLogic() {
     }
 
@@ -152,7 +153,7 @@ public class GameLogic {
      * Method battle
      * Will start a battle between the player and the boss
      *
-     * @param boss the boss that the player will fight against
+     * @param currentEnemy the actual ennemy that the player will fight against
      */
     private void battle(AbstractEnemy currentEnemy) {
 
