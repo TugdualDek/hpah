@@ -1,5 +1,7 @@
 package kerdrel.tugdual.characters;
 
+import lombok.Builder;
+
 /**
  * Class Enemy
  */
@@ -14,6 +16,7 @@ public class Enemy extends AbstractEnemy {
   //
   // Constructors
   //
+  @Builder
   public Enemy(String name, float health, float shield, float attackPower) {
     super(name, health, shield, attackPower);
   }

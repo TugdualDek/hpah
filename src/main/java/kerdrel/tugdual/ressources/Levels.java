@@ -40,6 +40,18 @@ public enum Levels {
             0,
             0,
             0
+    ),
+    FOURTH("The Deathly Hallows",
+            new String[]{"This is the final step of your career as a Wizard !", "You finally have the Deathly Hallows, and you will have to face Voldemort !"},
+            Boss.builder().health(100).shield(20).attackPower(30).name("Voldemort").build(),
+            200,
+            20,
+            30,
+            "The Great Hall",
+            Enemy.builder().health(130).shield(40).attackPower(5).name("Bellatrix Lestrange").build(),
+            130,
+            40,
+            5
     );
 
     private @Getter String name;

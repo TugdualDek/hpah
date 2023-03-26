@@ -1,7 +1,6 @@
 package kerdrel.tugdual.tools;
 
 import kerdrel.tugdual.characters.AbstractEnemy;
-import kerdrel.tugdual.characters.Enemy;
 import kerdrel.tugdual.characters.Wizard;
 import kerdrel.tugdual.ressources.Levels;
 import kerdrel.tugdual.wizarding.*;
@@ -107,11 +106,6 @@ public class GameLogic {
     public void checkLevel() {
 
         //the last level is the final boss level
-        if (level == Levels.values().length) {
-            console.log("You have reached the final boss level, you will now fight against the Dark Lord Voldemort !");
-            currentLevel = Levels.values()[level - 1];
-            finalBattle();
-        }
 
         //get all the informations from the enum Levels that corresponds to the current level
         currentLevel = Levels.values()[level - 1];
@@ -121,6 +115,9 @@ public class GameLogic {
         if (currentLevel.getBoss().getHealth() <= 0) {
             level++;
             currentLevel = Levels.values()[level - 1];
+            if (level == Levels.values().length) {
+                finalBattle();
+            }
         }
 
 
@@ -333,7 +330,8 @@ public class GameLogic {
     public void characterInfo() {
         console.clearConsole();
         console.printHeading("WIZARD INFORMATIONS");
-        System.out.println(player.getName() + "\tHP: " + player.getHealth() + "/" + player.getMaxHealth() + "\tShield: " + player.getShield());
+        console.log(player.getName() + " stats => \tHP: " + player.getHealth() + "/" + player.getMaxHealth() + "\tAttack: " + player.getAttackPower() + "\tShield: " + player.getShield());
+        console.log("You have " + player.getPotions().size() + " potion(s) in your inventory");
         console.printSeparator(20);
         //# of pots
         //System.out.println("# of Potions: " + player.pots);
@@ -342,6 +340,9 @@ public class GameLogic {
     }
 
     public void finalBattle() {
+        console.log("You have reached the final boss level, you will now fight against the Dark Lord Voldemort !");
+        scanner.anythingToContinue();
+
         //creating the evil emperor and letting the player fight against him
         AbstractEnemy firstEnemy = currentLevel.getEnemy();
         AbstractEnemy boss = currentLevel.getBoss();
@@ -354,7 +355,6 @@ public class GameLogic {
         scanner.anythingToContinue();
         console.clearConsole();
         console.log("Thank you for playing Harry Potter At Home !\nMade by Tugdual Audren de Kerdrel");
-        scanner.anythingToContinue();
 
         scanner.close();
 
