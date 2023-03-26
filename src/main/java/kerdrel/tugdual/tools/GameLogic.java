@@ -83,12 +83,13 @@ public class GameLogic {
     public void checkLevel() {
 
         //get all the informations from the enum Levels that corresponds to the current level
-
         currentLevel = Levels.values()[level - 1];
+
 
         // go to next level if the boss of the currentLevel is dead
         if (currentLevel.getBoss().getHealth() <= 0) {
             level++;
+            currentLevel = Levels.values()[level - 1];
         }
 
 
@@ -127,8 +128,8 @@ public class GameLogic {
 
             if (input == 1) {
 
-                int damages = player.attack() - boss.defend();
-                int damagesTook = boss.attack() - player.defend();
+                float damages = player.attack() - boss.defend();
+                float damagesTook = boss.attack() - player.defend();
 
                 if (damagesTook < 0) {
                     damages -= damagesTook / 2;
@@ -194,7 +195,7 @@ public class GameLogic {
                     System.out.println("You couldn't run away !");
                     scanner.anythingToContinue();
 
-                    int damagesTook = boss.attack() - player.defend();
+                    float damagesTook = boss.attack() - player.defend();
                     System.out.println("In your hurry, the " + boss.getName() + " dealt " + damagesTook + " damages to you !");
                     player.setHealth(player.getHealth() - damagesTook);
                     scanner.anythingToContinue();

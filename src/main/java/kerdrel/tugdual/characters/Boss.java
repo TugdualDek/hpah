@@ -27,14 +27,14 @@ public class Boss extends AbstractEnemy {
   // Methods
   //
   @Override
-  public int attack() {
-    return 0;
+  public float attack() {
+      return attackPower / 2;
   }
 
-  @Override
-  public int defend() {
-    return 0;
-  }
+    @Override
+    public float defend() {
+        return shield;
+    }
 
   //
   // Accessor methods

@@ -26,12 +26,13 @@ public abstract class Character {
         return health <= 0;
     }
 
-    public abstract int attack();
-    public abstract int defend();
+    public abstract float attack();
+
+    public abstract float defend();
 
     private void takeDamage(float damage) {
         health -= damage;
-        if(health < 0) {
+        if (health < 0) {
             health = 0;
         }
     }

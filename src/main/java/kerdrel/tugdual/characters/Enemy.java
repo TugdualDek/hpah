@@ -24,12 +24,12 @@ public class Enemy extends AbstractEnemy {
   // Methods
   //
   @Override
-  public int attack() {
+  public float attack() {
     return 0;
   }
 
   @Override
-  public int defend() {
+  public float defend() {
     return 0;
   }
 

@@ -41,18 +41,19 @@ public class Wizard extends Character {
     //
     // Methods
     //
-    public int attack() {
-        return 0;
+    public float attack() {
+        return attackPower;
     }
 
-    public int defend() {
-        return 0;
+    public float defend() {
+        return shield;
     }
 
 
     //
     // Accessor methods
     //
+
     /**
      * Set the value of pet
      *
