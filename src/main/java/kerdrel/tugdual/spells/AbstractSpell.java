@@ -6,17 +6,20 @@ import java.util.*;
 /**
  * Class AbstractSpell
  */
-abstract public class AbstractSpell {
+public abstract class AbstractSpell {
 
   //
   // Fields
   //
 
-  
+
   //
   // Constructors
   //
-  public AbstractSpell () { };
+  public AbstractSpell() {
+  }
+
+  ;
   
   //
   // Methods

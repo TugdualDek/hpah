@@ -1,6 +1,8 @@
 package kerdrel.tugdual.tools;
 
+import kerdrel.tugdual.characters.AbstractEnemy;
 import kerdrel.tugdual.characters.Boss;
+import kerdrel.tugdual.characters.Enemy;
 import kerdrel.tugdual.characters.Wizard;
 import kerdrel.tugdual.ressources.Levels;
 import kerdrel.tugdual.wizarding.*;
@@ -9,6 +11,9 @@ import java.util.Random;
 
 public class GameLogic {
 
+    //
+    // Fields
+    //
     SafeScanner scanner = new SafeScanner();
     Console console = new Console();
 
@@ -22,14 +27,27 @@ public class GameLogic {
     private int level = 1;
     private Levels currentLevel;
 
+    //
+    // Constructors
+    //
+    public GameLogic() {
+    }
+
+    //
+    // Methods
+    //
+
+    /**
+     * Method startGame
+     * Starts the game
+     */
     public void startGame() {
         boolean nameSet = false;
         String name;
         console.clearConsole();
         console.printSeparator(40);
         console.printSeparator(30);
-        console.log("Harry Potter At Home");
-        console.log("Made by Tugdual Audren de Kerdrel");
+        console.log("Harry Potter At Home\nMade by Tugdual Audren de Kerdrel");
         console.printSeparator(30);
         console.printSeparator(40);
         scanner.anythingToContinue();
@@ -37,7 +55,7 @@ public class GameLogic {
         do {
             console.clearConsole();
             console.printHeading("What's your name ?");
-             name = scanner.nextStringSafe();
+            name = scanner.nextStringSafe();
 
             console.clearConsole();
             console.printHeading("Your name is " + name + ".\n Is that corect ?");
@@ -80,6 +98,10 @@ public class GameLogic {
         gameLoop();
     }
 
+    /**
+     * Method checkLevel
+     * Will check the informations of the current level and will go to the next level if the boss is dead
+     */
     public void checkLevel() {
 
         //get all the informations from the enum Levels that corresponds to the current level
@@ -95,6 +117,11 @@ public class GameLogic {
 
     }
 
+    /**
+     * Method continueJourney
+     * Will continue the journey of the player
+     * will print the texts of the level and will fight against the boss of the level
+     */
     public void continueJourney() {
 
         //we will check the actual level and if the boss is dead, we will go to the next level
@@ -108,17 +135,33 @@ public class GameLogic {
 
         scanner.anythingToContinue();
         //we fight against the boss of the level
+
+        // if there is en enemy in the level, we will fight against it before we fight against the boss
+
+        if (currentLevel.getEnemy() != null) {
+            battle(currentLevel.getEnemy());
+        }
+
         battle(currentLevel.getBoss());
+
+        console.log("You have defeated the boss of the level !");
 
         scanner.anythingToContinue();
 
     }
 
-    private void battle(Boss boss) {
+    /**
+     * Method battle
+     * Will start a battle between the player and the boss
+     *
+     * @param boss the boss that the player will fight against
+     */
+    private void battle(AbstractEnemy currentEnemy) {
+
         while (true) {
 
             console.clearConsole();
-            console.printHeading(boss.getName() + "\nHP: " + boss.getHealth() + "/" + boss.getMaxHealth());
+            console.printHeading(currentEnemy.getName() + "\nHP: " + currentEnemy.getHealth() + "/" + currentEnemy.getMaxHealth());
             console.printHeading(player.getName() + "\nHP: " + player.getHealth() + "/" + player.getMaxHealth());
             System.out.println("Choose an action :");
             console.printSeparator(20);
@@ -128,8 +171,8 @@ public class GameLogic {
 
             if (input == 1) {
 
-                float damages = player.attack() - boss.defend();
-                float damagesTook = boss.attack() - player.defend();
+                float damages = player.attack() - currentEnemy.defend();
+                float damagesTook = currentEnemy.attack() - player.defend();
 
                 if (damagesTook < 0) {
                     damages -= damagesTook / 2;
@@ -141,21 +184,21 @@ public class GameLogic {
                 }
 
                 player.setHealth(player.getHealth() - damagesTook);
-                boss.setHealth(boss.getHealth() - damages);
+                currentEnemy.setHealth(currentEnemy.getHealth() - damages);
 
                 console.clearConsole();
                 console.printHeading("Battle");
-                System.out.println("You dealt " + damages + " damages to the " + boss.getName() + " !");
+                System.out.println("You dealt " + damages + " damages to the " + currentEnemy.getName() + " !");
                 console.printSeparator(20);
-                System.out.println("The " + boss.getName() + " dealt " + damagesTook + " damages to you !");
+                System.out.println("The " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
                 scanner.anythingToContinue();
 
                 if (player.getHealth() <= 0) {
                     playerDied();
                     break;
-                } else if (boss.getHealth() <= 0) {
+                } else if (currentEnemy.getHealth() <= 0) {
                     console.clearConsole();
-                    console.printHeading("You killed the " + boss.getName() + " !");
+                    console.printHeading("You killed the " + currentEnemy.getName() + " !");
 
                     //random drops, such as potions for example
 
@@ -188,15 +231,15 @@ public class GameLogic {
                 console.clearConsole();
 
                 if (Math.random() * 10 + 1 <= 3.5) { // 35% chance to run away
-                    console.printHeading("You ran away from the " + boss.getName() + " !");
+                    console.printHeading("You ran away from the " + currentEnemy.getName() + " !");
                     scanner.anythingToContinue();
                     break;
                 } else {
                     System.out.println("You couldn't run away !");
                     scanner.anythingToContinue();
 
-                    float damagesTook = boss.attack() - player.defend();
-                    System.out.println("In your hurry, the " + boss.getName() + " dealt " + damagesTook + " damages to you !");
+                    float damagesTook = currentEnemy.attack() - player.defend();
+                    System.out.println("In your hurry, the " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
                     player.setHealth(player.getHealth() - damagesTook);
                     scanner.anythingToContinue();
 
@@ -209,6 +252,10 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Method printMenu
+     * Will print the menu of the game before the player choose an action
+     */
     public void printMenu() {
         console.clearConsole();
         console.printHeading("Choose an action :");
@@ -218,6 +265,10 @@ public class GameLogic {
         System.out.println("(3) Exit the game");
     }
 
+    /**
+     * Method characterInfo
+     * Will print the informations of the wizard
+     */
     public void characterInfo() {
         console.clearConsole();
         console.printHeading("WAZRD INFORMATIONS");
@@ -229,12 +280,21 @@ public class GameLogic {
         scanner.anythingToContinue();
     }
 
+    /**
+     * Method playerDied
+     * Will print the message when the player died
+     */
     public void playerDied() {
         console.clearConsole();
         console.printHeading("You died !");
+        scanner.close();
         isRunning = false;
     }
 
+    /**
+     * Method gameLoop
+     * Will loop the game until the player choose to exit
+     */
     public void gameLoop() {
         while (isRunning) {
             printMenu();
@@ -245,6 +305,7 @@ public class GameLogic {
                 characterInfo();
             } else {
                 console.log("Thanks for playing my game ! See you soon !");
+                scanner.close();
                 isRunning = false;
             }
         }
