@@ -8,21 +8,23 @@ import lombok.Getter;
  */
 public enum Pet {
 
-  OWL("Owl"),
-  RAT("Rat"),
-  CAT("Cat"),
-  TOAD("Toad");
+  OWL("Owl", 10),
+  RAT("Rat", 11),
+  CAT("Cat", 9),
+  TOAD("Toad", 10);
 
   //
   // Fields
   //
   private String name;
-  
+  private int attackPower;
+
   //
   // Constructors
   //
-  Pet (String name) {
+  Pet(String name, int attackPower) {
     this.name = name;
+    this.attackPower = attackPower;
   };
   
   //
@@ -35,6 +37,10 @@ public enum Pet {
   //
   public String getName() {
     return this.name;
+  }
+
+  public int getAttackPower() {
+    return this.attackPower;
   }
 
 

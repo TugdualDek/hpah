@@ -136,9 +136,12 @@ public class Wizard extends Character {
     }
 
 
-
     //
     // Other methods
     //
+    public void removePotion(String potionType) {
+        //get the first potion of the array with a name matching potionType
+        potions.stream().filter(potion -> potion.getName().equals(potionType)).findFirst().ifPresent(potionToRemove -> potions.remove(potionToRemove));
+    }
 
 }

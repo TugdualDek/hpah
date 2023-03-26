@@ -74,6 +74,8 @@ public class GameLogic {
 
         int selection = scanner.nextIntInRange(1, 4);
 
+        //each pet will have a different attack power that willa dd to the player's attack power
+
         switch (selection) {
             case 1 -> pet = Pet.OWL;
             case 2 -> pet = Pet.RAT;
@@ -170,7 +172,7 @@ public class GameLogic {
 
             if (input == 1) {
 
-                float damages = player.attack() - currentEnemy.defend();
+                float damages = player.attack() + player.getPet().getAttackPower() - currentEnemy.defend();
                 float damagesTook = currentEnemy.attack() - player.defend();
 
                 if (damagesTook < 0) {
@@ -199,7 +201,22 @@ public class GameLogic {
                     console.clearConsole();
                     console.printHeading("You killed the " + currentEnemy.getName() + " !");
 
-                    //random drops, such as potions for example
+                    //if the enemy is killed, he will randomely drop either a potion of strength or a potion of shield
+
+                    //35% chance to drop a potion
+                    boolean addPotion = new Random().nextInt(100) < 35;
+
+                    //if potion dropped, we will randomely choose between a potion of strength or a potion of shield
+                    if (addPotion) {
+                        boolean isStrengthPotion = new Random().nextBoolean();
+                        if (isStrengthPotion) {
+                            player.setPotions(Potion.builder().name("strength").strength(5).build());
+                            console.log("The enemy dropped a potion of strength ! This potion has been added to your inventory !");
+                        } else {
+                            player.setPotions(Potion.builder().name("shield").shield(5).build());
+                            console.log("The enemy dropped a potion of shield ! This potion has been added to your inventory !");
+                        }
+                    }
 
                     scanner.anythingToContinue();
                     break;
@@ -207,23 +224,62 @@ public class GameLogic {
 
             } else if (input == 2) {
 
-                /*clearConsole();
-                if(player.pots > 0 && player.hp < player.maxHp){
-                    printHeading("Do you want to drink a potion? (" + player.pots + " left).");
-                    System.out.println("(1) Yes\n(2) No, maybe later");
-                    input = readInt("-> ", 2);
-                    if(input == 1){
-                        //player actually took it
-                        player.hp = player.maxHp;
-                        clearConsole();
-                        printHeading("You drank a magic potion. It restored your health back to " + player.maxHp);
-                        anythingToContinue();
+                console.clearConsole();
+                //check if player has potions
+                if (player.getPotions().length > 0) {
+                    console.printHeading("Do you want to drink a potion ?");
+                    //calculate the number of potions that has the same name
+                    int strengthPotions = 0;
+                    int shieldPotions = 0;
+                    for (Potion potion : player.getPotions()) {
+                        if (potion.getName().equals("strength")) {
+                            strengthPotions++;
+                        } else if (potion.getName().equals("shield")) {
+                            shieldPotions++;
+                        }
                     }
-                }else{
+
+                    //print the number of potions that has the same name even if there is not any potion of this type
+                    System.out.println("You have " + strengthPotions + " potion(s) of strength and " + shieldPotions + " potion(s) of shield");
+
+                    //ask which one to drink
+                    // console.log("Which one do you want to drink ?");
+                    console.log("(1) Strength\n(2) Shield");
+
+                    int potionInput = scanner.nextIntInRange(1, 2);
+
+                    if (potionInput == 1) {
+                        //drink a potion of strength
+                        if (strengthPotions > 0) {
+                            player.setAttackPower(player.getAttackPower() + 5);
+                            player.getPotions()[0].setStrength(player.getPotions()[0].getStrength() - 1);
+                            console.log("You drank a potion of strength ! Your strength has been increased by 5 !");
+                            //now remove the potion that has been drunk from the array with the player.removePotion() method
+                            player.removePotion("strength");
+                            scanner.anythingToContinue();
+                        } else {
+                            console.log("You don't have any potion of strength !");
+                            scanner.anythingToContinue();
+                        }
+                    } else if (potionInput == 2) {
+                        //drink a potion of shield
+                        if (shieldPotions > 0) {
+                            player.setShield(player.getShield() + 5);
+                            player.getPotions()[1].setShield(player.getPotions()[1].getShield() - 1);
+                            console.log("You drank a potion of shield ! Your shield has been increased by 5 !");
+                            //now remove the potion that has been drunk from the array with the player.removePotion() method
+                            player.removePotion("shield");
+                            scanner.anythingToContinue();
+                        } else {
+                            console.log("You don't have any potion of shield !");
+                            scanner.anythingToContinue();
+                        }
+                    }
+                } else {
                     //player CANNOT take a potion
-                    printHeading("You don't have any potions or you're at full health.");
-                    anythingToContinue();
-                }*/
+                    console.printHeading("You don't have any potions !");
+                    scanner.anythingToContinue();
+                }
 
             } else if (input == 3) {
 
