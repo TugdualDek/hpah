@@ -131,8 +131,8 @@ public class Wizard extends Character {
      *
      * @return the value of potions
      */
-    public Potion[] getPotions() {
-        return potions.toArray(new Potion[potions.size()]);
+    public ArrayList<Potion> getPotions() {
+        return potions;
     }
 
 

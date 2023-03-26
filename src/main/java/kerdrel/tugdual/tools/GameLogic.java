@@ -218,10 +218,10 @@ public class GameLogic {
                     if (addPotion) {
                         boolean isStrengthPotion = new Random().nextBoolean();
                         if (isStrengthPotion) {
-                            player.setPotions(Potion.builder().name("strength").strength(5).build());
+                            player.setPotions(Potion.builder().name("strength").strength(5).shield(0).build());
                             console.log("The enemy dropped a potion of strength ! This potion has been added to your inventory !");
                         } else {
-                            player.setPotions(Potion.builder().name("shield").shield(5).build());
+                            player.setPotions(Potion.builder().name("shield").strength(0).shield(5).build());
                             console.log("The enemy dropped a potion of shield ! This potion has been added to your inventory !");
                         }
                     }
@@ -234,7 +234,7 @@ public class GameLogic {
 
                 console.clearConsole();
                 //check if player has potions
-                if (player.getPotions().length > 0) {
+                if (player.getPotions().size() != 0) {
                     console.printHeading("Do you want to drink a potion ?");
                     //calculate the number of potions that has the same name
                     int strengthPotions = 0;
@@ -258,8 +258,8 @@ public class GameLogic {
                     if (potionInput == 1) {
                         //drink a potion of strength
                         if (strengthPotions > 0) {
-                            player.setAttackPower(player.getAttackPower() + 5);
-                            player.getPotions()[0].setStrength(player.getPotions()[0].getStrength() - 1);
+                            //set the attack power of the player to the actual attack power + the strength of the first potion of strength using the filter
+                            player.getPotions().stream().filter(potion -> potion.getName().equals("strength")).findFirst().ifPresent(potionToDrink -> player.setAttackPower(player.getAttackPower() + potionToDrink.getStrength()));
                             console.log("You drank a potion of strength ! Your strength has been increased by 5 !");
                             //now remove the potion that has been drunk from the array with the player.removePotion() method
                             player.removePotion("strength");
@@ -271,8 +271,7 @@ public class GameLogic {
                     } else if (potionInput == 2) {
                         //drink a potion of shield
                         if (shieldPotions > 0) {
-                            player.setShield(player.getShield() + 5);
-                            player.getPotions()[1].setShield(player.getPotions()[1].getShield() - 1);
+                            player.getPotions().stream().filter(potion -> potion.getName().equals("shield")).findFirst().ifPresent(potionToDrink -> player.setShield(player.getShield() + potionToDrink.getShield()));
                             console.log("You drank a potion of shield ! Your shield has been increased by 5 !");
                             //now remove the potion that has been drunk from the array with the player.removePotion() method
                             player.removePotion("shield");
