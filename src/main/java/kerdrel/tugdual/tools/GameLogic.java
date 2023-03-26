@@ -1,8 +1,6 @@
 package kerdrel.tugdual.tools;
 
 import kerdrel.tugdual.characters.AbstractEnemy;
-import kerdrel.tugdual.characters.Boss;
-import kerdrel.tugdual.characters.Enemy;
 import kerdrel.tugdual.characters.Wizard;
 import kerdrel.tugdual.ressources.Levels;
 import kerdrel.tugdual.wizarding.*;
