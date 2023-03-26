@@ -1,6 +1,7 @@
 package kerdrel.tugdual.tools;
 
 import kerdrel.tugdual.characters.AbstractEnemy;
+import kerdrel.tugdual.characters.Enemy;
 import kerdrel.tugdual.characters.Wizard;
 import kerdrel.tugdual.ressources.Levels;
 import kerdrel.tugdual.wizarding.*;
@@ -105,6 +106,13 @@ public class GameLogic {
      */
     public void checkLevel() {
 
+        //the last level is the final boss level
+        if (level == Levels.values().length) {
+            console.log("You have reached the final boss level, you will now fight against the Dark Lord Voldemort !");
+            currentLevel = Levels.values()[level - 1];
+            finalBattle();
+        }
+
         //get all the informations from the enum Levels that corresponds to the current level
         currentLevel = Levels.values()[level - 1];
 
@@ -189,9 +197,9 @@ public class GameLogic {
 
                 console.clearConsole();
                 console.printHeading("Battle");
-                System.out.println("You dealt " + damages + " damages to the " + currentEnemy.getName() + " !");
+                console.log("You dealt " + damages + " damages to the " + currentEnemy.getName() + " !");
                 console.printSeparator(20);
-                System.out.println("The " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
+                console.log("The " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
                 scanner.anythingToContinue();
 
                 if (player.getHealth() <= 0) {
@@ -240,11 +248,10 @@ public class GameLogic {
                     }
 
                     //print the number of potions that has the same name even if there is not any potion of this type
-                    System.out.println("You have " + strengthPotions + " potion(s) of strength and " + shieldPotions + " potion(s) of shield");
+                    console.log("You have " + strengthPotions + " potion(s) of strength and " + shieldPotions + " potion(s) of shield");
 
                     //ask which one to drink
-                    // console.log("Which one do you want to drink ?");
-                    console.log("(1) Strength\n(2) Shield");
+                    console.log("Which one to drink ?\n(1) Strength\n(2) Shield");
 
                     int potionInput = scanner.nextIntInRange(1, 2);
 
@@ -326,13 +333,31 @@ public class GameLogic {
      */
     public void characterInfo() {
         console.clearConsole();
-        console.printHeading("WAZRD INFORMATIONS");
+        console.printHeading("WIZARD INFORMATIONS");
         System.out.println(player.getName() + "\tHP: " + player.getHealth() + "/" + player.getMaxHealth() + "\tShield: " + player.getShield());
         console.printSeparator(20);
         //# of pots
         //System.out.println("# of Potions: " + player.pots);
         //printSeparator(20);
         scanner.anythingToContinue();
+    }
+
+    public void finalBattle() {
+        //creating the evil emperor and letting the player fight against him
+        AbstractEnemy firstEnemy = currentLevel.getEnemy();
+        AbstractEnemy boss = currentLevel.getBoss();
+        battle(firstEnemy);
+        battle(boss);
+
+        scanner.anythingToContinue();
+        console.clearConsole();
+        console.log("You have defeated the Dark Lord Voldemort !\nYou are now the new Dark Lord of the Wizarding World !");
+        scanner.anythingToContinue();
+        console.clearConsole();
+        console.log("Thank you for playing Harry Potter At Home !\nMade by Tugdual Audren de Kerdrel");
+        scanner.anythingToContinue();
+
+        isRunning = false;
     }
 
     /**
