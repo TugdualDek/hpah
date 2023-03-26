@@ -357,6 +357,8 @@ public class GameLogic {
         console.log("Thank you for playing Harry Potter At Home !\nMade by Tugdual Audren de Kerdrel");
         scanner.anythingToContinue();
 
+        scanner.close();
+
         isRunning = false;
     }
 
