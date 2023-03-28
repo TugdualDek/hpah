@@ -28,12 +28,12 @@ public class Enemy extends AbstractEnemy {
   //
   @Override
   public float attack() {
-    return 0;
+    return Math.round(attackPower / 3);
   }
 
   @Override
   public float defend() {
-    return 0;
+    return Math.round(shield / 2);
   }
 
 

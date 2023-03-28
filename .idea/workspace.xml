@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="modification final battle">
+    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="spécificité de chaque maisons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Wizard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/characters/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/ressources/Levels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/ressources/Levels.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/House.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/SortingHat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/SortingHat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +113,7 @@
       <workItem from="1679729053337" duration="20000" />
       <workItem from="1679753463606" duration="7910000" />
       <workItem from="1679816502958" duration="7696000" />
-      <workItem from="1680016572469" duration="1834000" />
+      <workItem from="1680016572469" duration="2748000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -255,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679824202337</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="spécificité de chaque maisons">
+      <created>1680018437185</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1680018437185</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +299,8 @@
     <MESSAGE value="close scanner" />
     <MESSAGE value="Modification PotionToDrink" />
     <MESSAGE value="modification final battle" />
-    <option name="LAST_COMMIT_MESSAGE" value="modification final battle" />
+    <MESSAGE value="spécificité de chaque maisons" />
+    <option name="LAST_COMMIT_MESSAGE" value="spécificité de chaque maisons" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

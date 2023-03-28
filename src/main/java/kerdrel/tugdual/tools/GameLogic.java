@@ -92,9 +92,9 @@ public class GameLogic {
 
         scanner.anythingToContinue();
 
-        // un joueur commence avec 100 points de vie, 100 points de bouclier, 10 points d'attaque, 50% de précision
+        // un joueur commence avec 100 points de vie, 20 points de bouclier, 15 points d'attaque, 50% de précision
 
-        player = Wizard.builder().name(name).health(100 + house.getHealthEfficacity()).shield(100).attackPower(10 + house.getSpellEfficacity()).pet(pet).wand(wand).house(house).precision(50 + house.getPrecisionEfficacity()).build();
+        player = Wizard.builder().name(name).health(100 + house.getHealthEfficacity()).shield(20).attackPower(15 + house.getSpellEfficacity()).pet(pet).wand(wand).house(house).precision(50 + house.getPrecisionEfficacity()).build();
 
         isRunning = true;
 
@@ -147,10 +147,10 @@ public class GameLogic {
         // if there is en enemy in the level, we will fight against it before we fight against the boss
 
         if (currentLevel.getEnemy() != null) {
-            battle(currentLevel.getEnemy());
+            battle(currentLevel.getEnemy(), false);
         }
 
-        battle(currentLevel.getBoss());
+        battle(currentLevel.getBoss(), false);
 
         console.log("You have defeated the boss of the level !");
 
@@ -164,7 +164,7 @@ public class GameLogic {
      *
      * @param currentEnemy the actual ennemy that the player will fight against
      */
-    private void battle(AbstractEnemy currentEnemy) {
+    private void battle(AbstractEnemy currentEnemy, boolean isFinal) {
 
         while (true) {
 
@@ -184,7 +184,7 @@ public class GameLogic {
                 // random damages with player.attack(), player.getPet().getAttackPower(), player.getPrecision(), currentEnemy.defend()
 
                 float damages = player.attack() + player.getPet().getAttackPower() - currentEnemy.defend();
-                float damagesTook = currentEnemy.attack() - player.defend();
+                float damagesTook = currentEnemy.attack() - player.defend() / 2.5f;
 
                 // reduce damages randomly based on the precision of the player
                 if (new Random().nextInt(100) > player.getPrecision()) {
@@ -225,19 +225,6 @@ public class GameLogic {
                     console.clearConsole();
                     console.printHeading("You killed the " + currentEnemy.getName() + " !");
 
-                    //ask the player to increase his health or attack power
-
-                    console.log("Would you like to increase your health or your attack power ?");
-                    console.log("(1) Health\n(2) Attack power");
-                    int choice = scanner.nextIntInRange(1, 2);
-                    if (choice == 1) {
-                        player.setHealth(player.getHealth() + 10);
-                        console.log("Your health has been increased to " + player.getHealth() + " !");
-                    } else {
-                        player.setAttackPower(player.getAttackPower() + 5);
-                        console.log("Your attack power has been increased to " + player.getAttackPower() + " !");
-                    }
-
                     //if the enemy is killed, he will randomely drop either a potion of strength or a potion of shield
 
                     //35% chance to drop a potion
@@ -253,6 +240,19 @@ public class GameLogic {
                             player.setPotions(Potion.builder().name("shield").strength(0).shield(5).build());
                             console.log("The enemy dropped a potion of shield ! This potion has been added to your inventory !");
                         }
+                    }
+
+                    //ask the player to increase his health or attack power
+
+                    console.log("Would you like to increase your health or your attack power ?");
+                    console.log("(1) Health\n(2) Attack power");
+                    int choice = scanner.nextIntInRange(1, 2);
+                    if (choice == 1) {
+                        player.setHealth(player.getHealth() + 15);
+                        console.log("Your health has been increased to " + player.getHealth() + " !");
+                    } else {
+                        player.setAttackPower(player.getAttackPower() + 10);
+                        console.log("Your attack power has been increased to " + player.getAttackPower() + " !");
                     }
 
                     scanner.anythingToContinue();
@@ -320,22 +320,30 @@ public class GameLogic {
 
                 console.clearConsole();
 
-                if (Math.random() * 10 + 1 <= 3.5) { // 35% chance to run away
-                    console.printHeading("You ran away from the " + currentEnemy.getName() + " !");
+                // if it is the final boss, the the player can't get away
+
+                if (isFinal) {
+                    console.printHeading("You can't run away from the final boss !");
                     scanner.anythingToContinue();
-                    break;
                 } else {
-                    System.out.println("You couldn't run away !");
-                    scanner.anythingToContinue();
 
-                    float damagesTook = currentEnemy.attack() - player.defend();
-                    System.out.println("In your hurry, the " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
-                    player.setHealth(player.getHealth() - damagesTook);
-                    scanner.anythingToContinue();
-
-                    if (player.getHealth() <= 0) {
-                        playerDied();
+                    if (Math.random() * 10 + 1 <= 3.5) { // 35% chance to run away
+                        console.printHeading("You ran away from the " + currentEnemy.getName() + " !");
+                        scanner.anythingToContinue();
                         break;
+                    } else {
+                        System.out.println("You couldn't run away !");
+                        scanner.anythingToContinue();
+
+                        float damagesTook = currentEnemy.attack() - player.defend();
+                        System.out.println("In your hurry, the " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
+                        player.setHealth(player.getHealth() - damagesTook);
+                        scanner.anythingToContinue();
+
+                        if (player.getHealth() <= 0) {
+                            playerDied();
+                            break;
+                        }
                     }
                 }
             }
@@ -378,8 +386,8 @@ public class GameLogic {
         //creating the evil emperor and letting the player fight against him
         AbstractEnemy firstEnemy = currentLevel.getEnemy();
         AbstractEnemy boss = currentLevel.getBoss();
-        battle(firstEnemy);
-        battle(boss);
+        battle(firstEnemy, true);
+        battle(boss, true);
 
         scanner.anythingToContinue();
         console.clearConsole();

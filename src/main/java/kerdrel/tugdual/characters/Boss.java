@@ -33,7 +33,7 @@ public class Boss extends AbstractEnemy {
 
     @Override
     public float defend() {
-        return shield;
+        return shield / 2;
     }
 
   //
