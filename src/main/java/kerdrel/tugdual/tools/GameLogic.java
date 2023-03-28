@@ -5,6 +5,9 @@ import kerdrel.tugdual.characters.Wizard;
 import kerdrel.tugdual.ressources.Levels;
 import kerdrel.tugdual.wizarding.*;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class GameLogic {
@@ -24,6 +27,8 @@ public class GameLogic {
     private boolean isRunning;
     private int level = 1;
     private Levels currentLevel;
+
+    private boolean inbattle = false;
 
     //
     // Constructors
@@ -147,15 +152,42 @@ public class GameLogic {
         // if there is en enemy in the level, we will fight against it before we fight against the boss
 
         if (currentLevel.getEnemy() != null) {
+            inbattle = true;
             battle(currentLevel.getEnemy(), false);
         }
 
+        inbattle = true;
         battle(currentLevel.getBoss(), false);
+        inbattle = false;
 
         console.log("You have defeated the boss of the level !");
 
         scanner.anythingToContinue();
 
+    }
+
+    private void battle(AbstractEnemy currentEnemy, boolean isFinal) {
+        while (inbattle) {
+            console.clearConsole();
+            console.printHeading(currentEnemy.getName() + "\nHP: " + currentEnemy.getHealth() + "/" + currentEnemy.getMaxHealth());
+            console.printHeading(player.getName() + "\nHP: " + player.getHealth() + "/" + player.getMaxHealth());
+            System.out.println("Choose an action :");
+            console.printSeparator(20);
+            System.out.println("(1) Attack\n(2) Potion\n(3) Run");
+            int input = scanner.nextIntInRange(1, 3);
+
+            if (input == 1) {
+                attack(currentEnemy);
+            } else if (input == 2) {
+                usePotion();
+            } else if (input == 3) {
+                runAway(currentEnemy, isFinal);
+            } else {
+                console.clearConsole();
+                console.printHeading("Invalid input !");
+                scanner.anythingToContinue();
+            }
+        }
     }
 
     /**
@@ -164,187 +196,144 @@ public class GameLogic {
      *
      * @param currentEnemy the actual ennemy that the player will fight against
      */
-    private void battle(AbstractEnemy currentEnemy, boolean isFinal) {
+    private void attack(AbstractEnemy currentEnemy) {
+        float damages = player.attack() + player.getPet().getAttackPower() - currentEnemy.defend();
+        float damagesTook = currentEnemy.attack() - player.defend() / 2.5f;
 
-        while (true) {
+        if (new Random().nextInt(100) > player.getPrecision()) {
+            damages = Math.round(damages / new Random().nextInt(10));
+            if (damages < 0) {
+                damages = 0;
+            }
+            console.log("You barely missed your shot !");
+        }
 
-            boolean missed = false;
+        if (damagesTook < 0) {
+            damages -= damagesTook / 2;
+            damagesTook = 0;
+        }
 
+        if (damages < 0) {
+            damages = 0;
+        }
+
+        player.setHealth(player.getHealth() - damagesTook);
+        currentEnemy.setHealth(currentEnemy.getHealth() - damages);
+
+        console.clearConsole();
+        console.printHeading("Battle");
+        console.log("You dealt " + damages + " damages to the " + currentEnemy.getName() + " !");
+        console.printSeparator(20);
+        console.log("The " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
+
+        if (player.getHealth() <= 0) {
+            playerDied();
+            inbattle = false;
+            return;
+        } else if (currentEnemy.getHealth() <= 0) {
+            enemyDied(currentEnemy);
+            inbattle = false;
+            return;
+        }
+
+        scanner.anythingToContinue();
+    }
+
+    public void enemyDied(AbstractEnemy currentEnemy) {
+        if (currentEnemy.getHealth() <= 0) {
             console.clearConsole();
-            console.printHeading(currentEnemy.getName() + "\nHP: " + currentEnemy.getHealth() + "/" + currentEnemy.getMaxHealth());
-            console.printHeading(player.getName() + "\nHP: " + player.getHealth() + "/" + player.getMaxHealth());
-            System.out.println("Choose an action :");
-            console.printSeparator(20);
-            System.out.println("(1) Attack\n(2) Potion\n(3) Run");
+            console.printHeading("You killed the " + currentEnemy.getName() + " !");
 
-            int input = scanner.nextIntInRange(1, 3);
+            //if the enemy is killed, he will randomely drop either a potion of strength or a potion of shield
 
-            if (input == 1) {
+            //35% chance to drop a potion
+            boolean addPotion = new Random().nextInt(100) < 35;
 
-                // random damages with player.attack(), player.getPet().getAttackPower(), player.getPrecision(), currentEnemy.defend()
-
-                float damages = player.attack() + player.getPet().getAttackPower() - currentEnemy.defend();
-                float damagesTook = currentEnemy.attack() - player.defend() / 2.5f;
-
-                // reduce damages randomly based on the precision of the player
-                if (new Random().nextInt(100) > player.getPrecision()) {
-                    damages = Math.round(damages / new Random().nextInt(10));
-                    // damages cannot be negative or infinite
-                    if (damages < 0) {
-                        damages = 0;
-                    }
-                    missed = true;
+            //if potion dropped, we will randomely choose between a potion of strength or a potion of shield
+            if (addPotion) {
+                boolean isStrengthPotion = new Random().nextBoolean();
+                if (isStrengthPotion) {
+                    player.setPotions(Potion.builder().name("strength").strength(5).shield(0).build());
+                    console.log("The enemy dropped a potion of strength ! This potion has been added to your inventory !");
+                } else {
+                    player.setPotions(Potion.builder().name("shield").strength(0).shield(5).build());
+                    console.log("The enemy dropped a potion of shield ! This potion has been added to your inventory !");
                 }
+            }
 
-                if (damagesTook < 0) {
-                    damages -= damagesTook / 2;
-                    damagesTook = 0;
-                }
+            //ask the player to increase his health or attack power
 
-                if (damages < 0) {
-                    damages = 0;
-                }
+            console.log("Would you like to increase your health or your attack power ?");
+            console.log("(1) Health\n(2) Attack power");
+            int choice = scanner.nextIntInRange(1, 2);
+            if (choice == 1) {
+                player.setHealth(player.getHealth() + 15);
+                console.log("Your health has been increased to " + player.getHealth() + " !");
+            } else {
+                player.setAttackPower(player.getAttackPower() + 10);
+                console.log("Your attack power has been increased to " + player.getAttackPower() + " !");
+            }
 
-                player.setHealth(player.getHealth() - damagesTook);
-                currentEnemy.setHealth(currentEnemy.getHealth() - damages);
+            inbattle = false;
 
-                console.clearConsole();
-                console.printHeading("Battle");
-                console.log(missed ? "You barely missed your shot !" : "");
-                console.log("You dealt " + damages + " damages to the " + currentEnemy.getName() + " !");
-                console.printSeparator(20);
-                console.log("The " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
+            scanner.anythingToContinue();
+        }
+    }
+
+    private void usePotion() {
+        console.clearConsole();
+        List<Potion> potions = player.getPotions();
+        if (potions.isEmpty()) {
+            console.log("You don't have any potions left!");
+            scanner.anythingToContinue();
+            return;
+        }
+        console.printHeading("Which potion do you want to use?");
+        Map<Integer, Potion> potionsMap = new HashMap<>();
+        int i = 1;
+        for (Potion potion : potions) {
+            console.log(i + ") " + potion.getName() + " potion (" + potion.getStrength() + " strength, " + potion.getShield() + " shield)");
+            potionsMap.put(i, potion);
+            i++;
+        }
+        int choice = scanner.nextIntInRange(1, potions.size());
+        Potion selectedPotion = potionsMap.get(choice);
+        if (selectedPotion.getName().equals("strength")) {
+            console.log("You drank a strength potion and gained " + selectedPotion.getStrength() + " strength points!");
+            player.setAttackPower(player.getAttackPower() + selectedPotion.getStrength());
+        } else {
+            console.log("You drank a shield potion and gained " + selectedPotion.getShield() + " shield points!");
+            player.setShield(player.getShield() + selectedPotion.getShield());
+        }
+        player.removePotion(selectedPotion.getName());
+        scanner.anythingToContinue();
+    }
+
+    public void runAway(AbstractEnemy currentEnemy, boolean isFinal) {
+        console.clearConsole();
+
+        // if it is the final boss, the the player can't get away
+
+        if (isFinal) {
+            console.printHeading("You can't run away from the final boss !");
+            scanner.anythingToContinue();
+        } else {
+
+            if (Math.random() * 10 + 1 <= 3.5) { // 35% chance to run away
+                console.printHeading("You ran away from the " + currentEnemy.getName() + " !");
+                inbattle = false;
+                scanner.anythingToContinue();
+            } else {
+                System.out.println("You couldn't run away !");
                 scanner.anythingToContinue();
 
-                missed = false;
+                float damagesTook = currentEnemy.attack() - player.defend();
+                System.out.println("In your hurry, the " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
+                player.setHealth(player.getHealth() - damagesTook);
+                scanner.anythingToContinue();
 
                 if (player.getHealth() <= 0) {
                     playerDied();
-                    break;
-                } else if (currentEnemy.getHealth() <= 0) {
-                    console.clearConsole();
-                    console.printHeading("You killed the " + currentEnemy.getName() + " !");
-
-                    //if the enemy is killed, he will randomely drop either a potion of strength or a potion of shield
-
-                    //35% chance to drop a potion
-                    boolean addPotion = new Random().nextInt(100) < 35;
-
-                    //if potion dropped, we will randomely choose between a potion of strength or a potion of shield
-                    if (addPotion) {
-                        boolean isStrengthPotion = new Random().nextBoolean();
-                        if (isStrengthPotion) {
-                            player.setPotions(Potion.builder().name("strength").strength(5).shield(0).build());
-                            console.log("The enemy dropped a potion of strength ! This potion has been added to your inventory !");
-                        } else {
-                            player.setPotions(Potion.builder().name("shield").strength(0).shield(5).build());
-                            console.log("The enemy dropped a potion of shield ! This potion has been added to your inventory !");
-                        }
-                    }
-
-                    //ask the player to increase his health or attack power
-
-                    console.log("Would you like to increase your health or your attack power ?");
-                    console.log("(1) Health\n(2) Attack power");
-                    int choice = scanner.nextIntInRange(1, 2);
-                    if (choice == 1) {
-                        player.setHealth(player.getHealth() + 15);
-                        console.log("Your health has been increased to " + player.getHealth() + " !");
-                    } else {
-                        player.setAttackPower(player.getAttackPower() + 10);
-                        console.log("Your attack power has been increased to " + player.getAttackPower() + " !");
-                    }
-
-                    scanner.anythingToContinue();
-                    break;
-                }
-
-            } else if (input == 2) {
-
-                console.clearConsole();
-                //check if player has potions
-                if (player.getPotions().size() != 0) {
-                    console.printHeading("Do you want to drink a potion ?");
-                    //calculate the number of potions that has the same name
-                    int strengthPotions = 0;
-                    int shieldPotions = 0;
-                    for (Potion potion : player.getPotions()) {
-                        if (potion.getName().equals("strength")) {
-                            strengthPotions++;
-                        } else if (potion.getName().equals("shield")) {
-                            shieldPotions++;
-                        }
-                    }
-
-                    //print the number of potions that has the same name even if there is not any potion of this type
-                    console.log("You have " + strengthPotions + " potion(s) of strength and " + shieldPotions + " potion(s) of shield");
-
-                    //ask which one to drink
-                    console.log("Which one to drink ?\n(1) Strength\n(2) Shield");
-
-                    int potionInput = scanner.nextIntInRange(1, 2);
-
-                    if (potionInput == 1) {
-                        //drink a potion of strength
-                        if (strengthPotions > 0) {
-                            //set the attack power of the player to the actual attack power + the strength of the first potion of strength using the filter
-                            player.getPotions().stream().filter(potion -> potion.getName().equals("strength")).findFirst().ifPresent(potionToDrink -> player.setAttackPower(player.getAttackPower() + potionToDrink.getStrength()));
-                            console.log("You drank a potion of strength ! Your strength has been increased by 5 !");
-                            //now remove the potion that has been drunk from the array with the player.removePotion() method
-                            player.removePotion("strength");
-                            scanner.anythingToContinue();
-                        } else {
-                            console.log("You don't have any potion of strength !");
-                            scanner.anythingToContinue();
-                        }
-                    } else if (potionInput == 2) {
-                        //drink a potion of shield
-                        if (shieldPotions > 0) {
-                            player.getPotions().stream().filter(potion -> potion.getName().equals("shield")).findFirst().ifPresent(potionToDrink -> player.setShield(player.getShield() + potionToDrink.getShield()));
-                            console.log("You drank a potion of shield ! Your shield has been increased by 5 !");
-                            //now remove the potion that has been drunk from the array with the player.removePotion() method
-                            player.removePotion("shield");
-                            scanner.anythingToContinue();
-                        } else {
-                            console.log("You don't have any potion of shield !");
-                            scanner.anythingToContinue();
-                        }
-                    }
-                } else {
-                    //player CANNOT take a potion
-                    console.printHeading("You don't have any potions !");
-                    scanner.anythingToContinue();
-                }
-
-            } else if (input == 3) {
-
-                console.clearConsole();
-
-                // if it is the final boss, the the player can't get away
-
-                if (isFinal) {
-                    console.printHeading("You can't run away from the final boss !");
-                    scanner.anythingToContinue();
-                } else {
-
-                    if (Math.random() * 10 + 1 <= 3.5) { // 35% chance to run away
-                        console.printHeading("You ran away from the " + currentEnemy.getName() + " !");
-                        scanner.anythingToContinue();
-                        break;
-                    } else {
-                        System.out.println("You couldn't run away !");
-                        scanner.anythingToContinue();
-
-                        float damagesTook = currentEnemy.attack() - player.defend();
-                        System.out.println("In your hurry, the " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
-                        player.setHealth(player.getHealth() - damagesTook);
-                        scanner.anythingToContinue();
-
-                        if (player.getHealth() <= 0) {
-                            playerDied();
-                            break;
-                        }
-                    }
                 }
             }
         }
