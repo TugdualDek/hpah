@@ -20,18 +20,17 @@ public class SortingHat {
   // Constructors
   //
   public SortingHat () {
-    this.houses[0] = new House("Gryffondor");
-    this.houses[1] = new House("Hufflepuff");
-    this.houses[2] = new House("Ravenclaw");
-    this.houses[3] = new House("Slytherin");
+    this.houses[0] = new House("Gryffondor", 0, 0, 10, 0);
+    this.houses[1] = new House("Hufflepuff", 10, 0, 0, 0);
+    this.houses[2] = new House("Ravenclaw", 0, 0, 0, 10);
+    this.houses[3] = new House("Slytherin", 0, 10, 0, 0);
   };
   
   //
   // Methods
   //
-  public String getRandomHouse(){
-    House randomElement = houses[rand.nextInt(houses.length)];
-    return randomElement.getHouse();
+  public House getRandomHouse() {
+    return houses[rand.nextInt(houses.length)];
   }
 
   //

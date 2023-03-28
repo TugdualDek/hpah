@@ -6,6 +6,8 @@ import kerdrel.tugdual.wizarding.House;
 import kerdrel.tugdual.wizarding.Pet;
 import kerdrel.tugdual.wizarding.Wand;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.*;
 
@@ -22,6 +24,8 @@ public class Wizard extends Character {
     private Pet pet;
     private Wand wand;
     private House house;
+    private @Getter
+    @Setter float precision;
     private ArrayList<Spell> knownSpells = new ArrayList<>();
     private ArrayList<Potion> potions = new ArrayList<>();
 
@@ -30,11 +34,12 @@ public class Wizard extends Character {
     //
 
     @Builder
-    public Wizard(String name, float health, float shield, float attackPower, Pet pet, Wand wand, House house) {
+    public Wizard(String name, float health, float shield, float attackPower, float precision, Pet pet, Wand wand, House house) {
         super(name, health, shield, attackPower);
         this.pet = pet;
         this.wand = wand;
         this.house = house;
+        this.precision = precision;
     }
 
 

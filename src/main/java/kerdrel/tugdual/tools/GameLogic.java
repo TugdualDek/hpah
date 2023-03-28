@@ -18,7 +18,7 @@ public class GameLogic {
     private Wizard player;
     private Pet pet;
     private SortingHat hat = new SortingHat();
-    private House house = new House(hat.getRandomHouse());
+    private House house = hat.getRandomHouse();
     private Wand wand = new Wand(Core.values()[new Random().nextInt(Core.values().length)], new Random().nextInt(10, 16));
 
     private boolean isRunning;
@@ -92,7 +92,9 @@ public class GameLogic {
 
         scanner.anythingToContinue();
 
-        player = Wizard.builder().name(name).health(100).shield(100).attackPower(10).pet(pet).wand(wand).house(house).build();
+        // un joueur commence avec 100 points de vie, 100 points de bouclier, 10 points d'attaque, 50% de précision
+
+        player = Wizard.builder().name(name).health(100 + house.getHealthEfficacity()).shield(100).attackPower(10 + house.getSpellEfficacity()).pet(pet).wand(wand).house(house).precision(50 + house.getPrecisionEfficacity()).build();
 
         isRunning = true;
 
@@ -166,6 +168,8 @@ public class GameLogic {
 
         while (true) {
 
+            boolean missed = false;
+
             console.clearConsole();
             console.printHeading(currentEnemy.getName() + "\nHP: " + currentEnemy.getHealth() + "/" + currentEnemy.getMaxHealth());
             console.printHeading(player.getName() + "\nHP: " + player.getHealth() + "/" + player.getMaxHealth());
@@ -177,8 +181,20 @@ public class GameLogic {
 
             if (input == 1) {
 
+                // random damages with player.attack(), player.getPet().getAttackPower(), player.getPrecision(), currentEnemy.defend()
+
                 float damages = player.attack() + player.getPet().getAttackPower() - currentEnemy.defend();
                 float damagesTook = currentEnemy.attack() - player.defend();
+
+                // reduce damages randomly based on the precision of the player
+                if (new Random().nextInt(100) > player.getPrecision()) {
+                    damages = Math.round(damages / new Random().nextInt(10));
+                    // damages cannot be negative or infinite
+                    if (damages < 0) {
+                        damages = 0;
+                    }
+                    missed = true;
+                }
 
                 if (damagesTook < 0) {
                     damages -= damagesTook / 2;
@@ -194,10 +210,13 @@ public class GameLogic {
 
                 console.clearConsole();
                 console.printHeading("Battle");
+                console.log(missed ? "You barely missed your shot !" : "");
                 console.log("You dealt " + damages + " damages to the " + currentEnemy.getName() + " !");
                 console.printSeparator(20);
                 console.log("The " + currentEnemy.getName() + " dealt " + damagesTook + " damages to you !");
                 scanner.anythingToContinue();
+
+                missed = false;
 
                 if (player.getHealth() <= 0) {
                     playerDied();
@@ -205,6 +224,19 @@ public class GameLogic {
                 } else if (currentEnemy.getHealth() <= 0) {
                     console.clearConsole();
                     console.printHeading("You killed the " + currentEnemy.getName() + " !");
+
+                    //ask the player to increase his health or attack power
+
+                    console.log("Would you like to increase your health or your attack power ?");
+                    console.log("(1) Health\n(2) Attack power");
+                    int choice = scanner.nextIntInRange(1, 2);
+                    if (choice == 1) {
+                        player.setHealth(player.getHealth() + 10);
+                        console.log("Your health has been increased to " + player.getHealth() + " !");
+                    } else {
+                        player.setAttackPower(player.getAttackPower() + 5);
+                        console.log("Your attack power has been increased to " + player.getAttackPower() + " !");
+                    }
 
                     //if the enemy is killed, he will randomely drop either a potion of strength or a potion of shield
 
@@ -330,7 +362,7 @@ public class GameLogic {
     public void characterInfo() {
         console.clearConsole();
         console.printHeading("WIZARD INFORMATIONS");
-        console.log(player.getName() + " stats => \tHP: " + player.getHealth() + "/" + player.getMaxHealth() + "\tAttack: " + player.getAttackPower() + "\tShield: " + player.getShield());
+        console.log(player.getName() + " stats =>\tHP: " + player.getHealth() + "/" + player.getMaxHealth() + "\tAttack: " + player.getAttackPower() + "\tShield: " + player.getShield());
         console.log("You have " + player.getPotions().size() + " potion(s) in your inventory");
         console.printSeparator(20);
         //# of pots
