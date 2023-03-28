@@ -28,7 +28,7 @@ public class GameLogic {
     private int level = 1;
     private Levels currentLevel;
 
-    private boolean inbattle = false;
+    private boolean inBattle = false;
 
     //
     // Constructors
@@ -152,13 +152,13 @@ public class GameLogic {
         // if there is en enemy in the level, we will fight against it before we fight against the boss
 
         if (currentLevel.getEnemy() != null) {
-            inbattle = true;
+            inBattle = true;
             battle(currentLevel.getEnemy(), false);
         }
 
-        inbattle = true;
+        inBattle = true;
         battle(currentLevel.getBoss(), false);
-        inbattle = false;
+        inBattle = false;
 
         console.log("You have defeated the boss of the level !");
 
@@ -167,7 +167,7 @@ public class GameLogic {
     }
 
     private void battle(AbstractEnemy currentEnemy, boolean isFinal) {
-        while (inbattle) {
+        while (inBattle) {
             console.clearConsole();
             console.printHeading(currentEnemy.getName() + "\nHP: " + currentEnemy.getHealth() + "/" + currentEnemy.getMaxHealth());
             console.printHeading(player.getName() + "\nHP: " + player.getHealth() + "/" + player.getMaxHealth());
@@ -228,11 +228,11 @@ public class GameLogic {
 
         if (player.getHealth() <= 0) {
             playerDied();
-            inbattle = false;
+            inBattle = false;
             return;
         } else if (currentEnemy.getHealth() <= 0) {
             enemyDied(currentEnemy);
-            inbattle = false;
+            inBattle = false;
             return;
         }
 
@@ -274,7 +274,7 @@ public class GameLogic {
                 console.log("Your attack power has been increased to " + player.getAttackPower() + " !");
             }
 
-            inbattle = false;
+            inBattle = false;
 
             scanner.anythingToContinue();
         }
@@ -321,7 +321,7 @@ public class GameLogic {
 
             if (Math.random() * 10 + 1 <= 3.5) { // 35% chance to run away
                 console.printHeading("You ran away from the " + currentEnemy.getName() + " !");
-                inbattle = false;
+                inBattle = false;
                 scanner.anythingToContinue();
             } else {
                 System.out.println("You couldn't run away !");
