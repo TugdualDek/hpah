@@ -3,6 +3,7 @@ package kerdrel.tugdual.tools;
 import kerdrel.tugdual.characters.AbstractEnemy;
 import kerdrel.tugdual.characters.Wizard;
 import kerdrel.tugdual.ressources.Levels;
+import kerdrel.tugdual.spells.Spell;
 import kerdrel.tugdual.wizarding.*;
 
 import java.util.HashMap;
@@ -79,7 +80,7 @@ public class GameLogic {
 
         int selection = scanner.nextIntInRange(1, 4);
 
-        //each pet will have a different attack power that willa dd to the player's attack power
+        //each pet will have a different attack power that will add to the player's attack power
 
         switch (selection) {
             case 1 -> pet = Pet.OWL;
@@ -92,17 +93,13 @@ public class GameLogic {
             }
         }
         console.log("Very good choice, your pet is therefore a " + pet.getName() + "\nWe will now provide you with a wand that will best suit you!");
-
         console.log("A wand of type " + wand.getCore().getName() + " and of " + wand.getSize() + "cm has chosen you !");
-
         scanner.anythingToContinue();
 
         // un joueur commence avec 100 points de vie, 20 points de bouclier, 15 points d'attaque, 50% de précision
-
         player = Wizard.builder().name(name).health(100 + house.getHealthEfficacity()).shield(20).attackPower(15 + house.getSpellEfficacity()).pet(pet).wand(wand).house(house).precision(50 + house.getPrecisionEfficacity()).build();
-
+        player.setKnownSpells((Spell) Spell.builder().name("Wingardium Leviosa").damage(10).build());
         isRunning = true;
-
         gameLoop();
     }
 
@@ -120,6 +117,15 @@ public class GameLogic {
 
         // go to next level if the boss of the currentLevel is dead
         if (currentLevel.getBoss().getHealth() <= 0) {
+            // get the spellLearnt at the end of the level
+            Spell spellLearnt = currentLevel.getSpellLearnt();
+            // if the spellLearnt is not null, we will add it to the list of known spells of the player
+            if (spellLearnt != null) {
+                player.setKnownSpells(spellLearnt);
+                console.log("You learnt a new spell : " + spellLearnt.getName());
+                scanner.anythingToContinue();
+            }
+
             level++;
             currentLevel = Levels.values()[level - 1];
             if (level == Levels.values().length) {
@@ -197,7 +203,19 @@ public class GameLogic {
      * @param currentEnemy the actual ennemy that the player will fight against
      */
     private void attack(AbstractEnemy currentEnemy) {
-        float damages = player.attack() + player.getPet().getAttackPower() - currentEnemy.defend();
+        //print all the spells that the player knows
+        for (int i = 0; i < player.getKnownSpells().length; i++) {
+            System.out.println("(" + (i + 1) + ") " + player.getKnownSpells()[i].getName());
+        }
+        console.log("Choose a spell to attack the enemy :");
+
+        //the player will choose a spell to attack the enemy
+        int input = scanner.nextIntInRange(1, player.getKnownSpells().length);
+
+        //get the spell from the input
+        //Spell spell = player.getKnownSpells()[input - 1];
+
+        float damages = player.attack(player.getKnownSpells()[input - 1]) + player.getPet().getAttackPower() - currentEnemy.defend();
         float damagesTook = currentEnemy.attack() - player.defend() / 2.5f;
 
         if (new Random().nextInt(100) > player.getPrecision()) {

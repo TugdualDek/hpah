@@ -1,5 +1,6 @@
 package kerdrel.tugdual.characters;
 
+import kerdrel.tugdual.spells.Spell;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +27,12 @@ public abstract class Character {
         return health <= 0;
     }
 
+    //
+    // Methods
+    //
     public abstract float attack();
+
+    public abstract float attack(Spell spellUsed);
 
     public abstract float defend();
 
@@ -37,3 +43,4 @@ public abstract class Character {
         }
     }
 }
+

@@ -1,5 +1,6 @@
 package kerdrel.tugdual.characters;
 
+import kerdrel.tugdual.spells.Spell;
 import lombok.Builder;
 
 /**
@@ -22,13 +23,17 @@ public class Enemy extends AbstractEnemy {
   }
 
 
-  
   //
   // Methods
   //
   @Override
   public float attack() {
     return Math.round(attackPower / 3);
+  }
+
+  @Override
+  public float attack(Spell spellUsed) {
+    return 0;
   }
 
   @Override

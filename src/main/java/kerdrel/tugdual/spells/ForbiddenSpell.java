@@ -9,12 +9,16 @@ public class ForbiddenSpell extends AbstractSpell {
   // Fields
   //
 
-  
+
   //
   // Constructors
   //
-  public ForbiddenSpell () { };
-  
+  public ForbiddenSpell(String name, float damage) {
+    super(name, damage);
+  }
+
+  ;
+
   //
   // Methods
   //

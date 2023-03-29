@@ -2,6 +2,8 @@ package kerdrel.tugdual.ressources;
 
 import kerdrel.tugdual.characters.Boss;
 import kerdrel.tugdual.characters.Enemy;
+import kerdrel.tugdual.spells.AbstractSpell;
+import kerdrel.tugdual.spells.Spell;
 import lombok.Getter;
 
 public enum Levels {
@@ -17,7 +19,8 @@ public enum Levels {
             null,
             0,
             0,
-            0),
+            0,
+            Spell.builder().name("Expelliarmus").damage(10).build()),
     SECOND("The Chamber of Secrets",
             new String[]{"After defeating the Troll last year, you made it to the second year !", "But this time, something sinister lurks in the school's hallways. Students begin to turn to stone, and a mysterious voice chants warnings about a \"Chamber of Secrets\" that must be opened.", "You will have to defeat the terrible Basilic ! !"},
             Boss.builder().health(100).shield(10).attackPower(30).name("Basilic").build(),
@@ -28,7 +31,9 @@ public enum Levels {
             null,
             0,
             0,
-            0),
+            0,
+            Spell.builder().name("Expecto Patronum").damage(10).build()
+    ),
     THIRD("The Prisoner of Azkaban",
             new String[]{"Congratulations on your second year! You are once again at Hogwarts.", "But this year, you heard that the terrible Sirius Black, escaped from Azkaban !", "To protect you, the administration has put in place detractors, monsters that suck the souls out of bad people.", "You will have to face one of them who can't control himself adn tries to attack you (Are you bad ?) !"},
             Boss.builder().health(100).shield(10).attackPower(40).name("Detractor").build(),
@@ -39,7 +44,8 @@ public enum Levels {
             null,
             0,
             0,
-            0
+            0,
+            Spell.builder().name("Accio").damage(10).build()
     ),
     FOURTH("The Deathly Hallows",
             new String[]{"This is the final step of your career as a Wizard !", "You finally have the Deathly Hallows, and you will have to face Voldemort !"},
@@ -51,7 +57,8 @@ public enum Levels {
             Enemy.builder().health(130).shield(40).attackPower(30).name("Bellatrix Lestrange").build(),
             130,
             40,
-            5
+            5,
+            null
     );
 
     private @Getter String name;
@@ -68,8 +75,9 @@ public enum Levels {
     private @Getter int enemyHealth;
     private @Getter int enemyShield;
     private @Getter int enemyAttackPower;
+    private @Getter Spell spellLearnt;
 
-    Levels(String name, String[] text, Boss boss, int bossHealth, int bossShield, int bossAttackPower, String place, Enemy enemy, int enemyHealth, int enemyShield, int enemyAttackPower) {
+    Levels(String name, String[] text, Boss boss, int bossHealth, int bossShield, int bossAttackPower, String place, Enemy enemy, int enemyHealth, int enemyShield, int enemyAttackPower, Spell spellLearnt) {
         this.name = name;
         this.text = text;
         this.boss = boss;
@@ -81,6 +89,7 @@ public enum Levels {
         this.enemyHealth = enemyHealth;
         this.enemyShield = enemyShield;
         this.enemyAttackPower = enemyAttackPower;
+        this.spellLearnt = spellLearnt;
     }
 
 

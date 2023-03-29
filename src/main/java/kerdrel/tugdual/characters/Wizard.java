@@ -43,11 +43,17 @@ public class Wizard extends Character {
     }
 
 
+    @Override
+    public float attack() {
+        return 0;
+    }
+
     //
     // Methods
     //
-    public float attack() {
-        return attackPower;
+    @Override
+    public float attack(Spell spellUsed) {
+        return attackPower + spellUsed.getDamage();
     }
 
     public float defend() {
