@@ -204,10 +204,11 @@ public class GameLogic {
      */
     private void attack(AbstractEnemy currentEnemy) {
         //print all the spells that the player knows
+        console.log("Choose a spell to attack the enemy :");
         for (int i = 0; i < player.getKnownSpells().length; i++) {
             System.out.println("(" + (i + 1) + ") " + player.getKnownSpells()[i].getName());
         }
-        console.log("Choose a spell to attack the enemy :");
+
 
         //the player will choose a spell to attack the enemy
         int input = scanner.nextIntInRange(1, player.getKnownSpells().length);
