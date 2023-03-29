@@ -1,15 +1,16 @@
 
 # harry Potter At Home
 
-Bienvenue dans Harry Potter at Home, le RPG des sorciers. Avez-vous l’étoffe des plus grands
-sorciers ? Saurez-vous relever tous les défis ? C’est parti !
-Votre objectif est de valider votre scolarité à Poudlard. Chaque année sera parsemée d’embuches
+Welcome to Harry Potter at Home, the wizarding RPG. 
+Do you have what it takes to be the greatest wizard? 
+Can you meet all the challenges? Let's get started! 
+Your goal is to complete your education at Hogwarts. Each year will be full of challenges
 
 ## Features
 
 - Play the game !
 - Create your player
-- Go to Hogwart
+- Go to Hogwarts
 - End the game
 
 ## To-Do
