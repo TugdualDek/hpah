@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="modificaiton spells">
+      <change afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/test/WizardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +60,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.WizardTest.testAttack">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.Main" />
       <module name="hpah" />
@@ -69,6 +70,53 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WizardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hpah" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kerdrel.tugdual.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kerdrel.tugdual.test" />
+      <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.test.WizardTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WizardTest.testAttack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hpah" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kerdrel.tugdual.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kerdrel.tugdual.test" />
+      <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.test.WizardTest" />
+      <option name="METHOD_NAME" value="testAttack" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WizardTest.testDefend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hpah" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kerdrel.tugdual.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kerdrel.tugdual.test" />
+      <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.test.WizardTest" />
+      <option name="METHOD_NAME" value="testDefend" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -86,6 +134,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WizardTest.testAttack" />
+        <item itemvalue="JUnit.WizardTest.testDefend" />
+        <item itemvalue="JUnit.WizardTest" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -111,7 +162,9 @@
       <workItem from="1679753463606" duration="7910000" />
       <workItem from="1679816502958" duration="7696000" />
       <workItem from="1680016572469" duration="5402000" />
-      <workItem from="1680103244440" duration="4034000" />
+      <workItem from="1680103244440" duration="4864000" />
+      <workItem from="1680193620017" duration="60000" />
+      <workItem from="1680193839978" duration="1180000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -288,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680106816796</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="modificaiton spells">
+      <created>1680110983096</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1680110983097</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
