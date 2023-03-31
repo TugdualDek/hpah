@@ -14,21 +14,26 @@ import java.util.Random;
 public class GameLogic {
 
     //
+
     // Fields
     //
+    // Scanner and Console objects for user input and output
     SafeScanner scanner = new SafeScanner();
     Console console = new Console();
 
+    // Player, pet, house, wand, and SortingHat objects for game setup
     private Wizard player;
     private Pet pet;
     private SortingHat hat = new SortingHat();
     private House house = hat.getRandomHouse();
     private Wand wand = new Wand(Core.values()[new Random().nextInt(Core.values().length)], new Random().nextInt(10, 16));
 
+    // Game state variables
     private boolean isRunning;
     private int level = 1;
     private Levels currentLevel;
 
+    // Battle state variable
     private boolean inBattle = false;
 
     //
@@ -96,7 +101,7 @@ public class GameLogic {
         console.log("A wand of type " + wand.getCore().getName() + " and of " + wand.getSize() + "cm has chosen you !");
         scanner.anythingToContinue();
 
-        // un joueur commence avec 100 points de vie, 20 points de bouclier, 15 points d'attaque, 50% de précision
+        // The player starts with 150 health points, 20 shield points, 15 attack points, and 50% precision
         player = Wizard.builder().name(name).health(150 + house.getHealthEfficacity()).shield(20).attackPower(15 + house.getSpellEfficacity()).pet(pet).wand(wand).house(house).precision(50 + house.getPrecisionEfficacity()).build();
         player.setKnownSpells((Spell) Spell.builder().name("Wingardium Leviosa").damage(10).build());
         isRunning = true;
@@ -109,17 +114,14 @@ public class GameLogic {
      */
     public void checkLevel() {
 
-        //the last level is the final boss level
-
-        //get all the informations from the enum Levels that corresponds to the current level
+        // Get all the informations from the enum Levels that corresponds to the current level
         currentLevel = Levels.values()[level - 1];
 
-
-        // go to next level if the boss of the currentLevel is dead
+        // Go to next level if the boss of the currentLevel is dead
         if (currentLevel.getBoss().getHealth() <= 0) {
-            // get the spellLearnt at the end of the level
+            // Get the spellLearnt at the end of the level
             Spell spellLearnt = currentLevel.getSpellLearnt();
-            // if the spellLearnt is not null, we will add it to the list of known spells of the player
+            // If the spellLearnt is not null, we will add it to the list of known spells of the player
             if (spellLearnt != null) {
                 player.setKnownSpells(spellLearnt);
                 console.log("You learnt a new spell : " + spellLearnt.getName());
@@ -128,12 +130,11 @@ public class GameLogic {
 
             level++;
             currentLevel = Levels.values()[level - 1];
+            // If the current level is the last level, start the final battle
             if (level == Levels.values().length) {
                 finalBattle();
             }
         }
-
-
     }
 
     /**
@@ -156,7 +157,6 @@ public class GameLogic {
         //we fight against the boss of the level
 
         // if there is en enemy in the level, we will fight against it before we fight against the boss
-
         if (currentLevel.getEnemy() != null) {
             inBattle = true;
             battle(currentLevel.getEnemy(), false);
@@ -172,6 +172,7 @@ public class GameLogic {
 
     }
 
+
     /**
      * Class battle
      *
@@ -179,22 +180,29 @@ public class GameLogic {
      * @param isFinal      chack if this is the final battle
      */
     private void battle(AbstractEnemy currentEnemy, boolean isFinal) {
+        //while the player is in battle
         while (inBattle) {
             console.clearConsole();
+            //print the name and health of the enemy and the player
             console.printHeading(currentEnemy.getName() + "\nHP: " + currentEnemy.getHealth() + "/" + currentEnemy.getMaxHealth());
             console.printHeading(player.getName() + "\nHP: " + player.getHealth() + "/" + player.getMaxHealth());
             console.log("Choose an action :");
             console.printSeparator(20);
             console.log("(1) Attack\n(2) Potion\n(3) Run");
+            //the player will choose an action
             int input = scanner.nextIntInRange(1, 3);
 
             if (input == 1) {
+                //if the player chooses to attack, call the attack method
                 attack(currentEnemy);
             } else if (input == 2) {
+                //if the player chooses to use a potion, call the usePotion method
                 usePotion();
             } else if (input == 3) {
+                //if the player chooses to run away, call the runAway method
                 runAway(currentEnemy, isFinal);
             } else {
+                //if the player inputs an invalid action, print an error message
                 console.clearConsole();
                 console.printHeading("Invalid input !");
                 scanner.anythingToContinue();
@@ -203,10 +211,10 @@ public class GameLogic {
     }
 
     /**
-     * Method battle
-     * Will start a battle between the player and the boss
+     * Method attack
+     * Will start an attack between the player and the enemy
      *
-     * @param currentEnemy the actual ennemy that the player will fight against
+     * @param currentEnemy the actual enemy that the player will fight against
      */
     private void attack(AbstractEnemy currentEnemy) {
         //print all the spells that the player knows
@@ -215,16 +223,15 @@ public class GameLogic {
             System.out.println("(" + (i + 1) + ") " + player.getKnownSpells()[i].getName());
         }
 
-
         //the player will choose a spell to attack the enemy
         int input = scanner.nextIntInRange(1, player.getKnownSpells().length);
 
-        //get the spell from the input
-        //Spell spell = player.getKnownSpells()[input - 1];
-
+        //calculate the damages dealt by the player
         float damages = player.attack(player.getKnownSpells()[input - 1]) + player.getPet().getAttackPower() - currentEnemy.defend();
+        //calculate the damages taken by the player
         float damagesTook = currentEnemy.attack() - player.defend() / 2.5f;
 
+        //check if the player missed the shot
         if (new Random().nextInt(100) > player.getPrecision()) {
             damages = Math.round(damages / new Random().nextInt(10));
             if (damages < 0) {
@@ -233,18 +240,22 @@ public class GameLogic {
             console.log("You barely missed your shot !");
         }
 
+        //check if the damages taken by the player are negative
         if (damagesTook < 0) {
             damages -= damagesTook / 2;
             damagesTook = 0;
         }
 
+        //check if the damages dealt bythe player are negative
         if (damages < 0) {
             damages = 0;
         }
 
-        player.setHealth(player.getHealth() - damagesTook);
+        //update the health of the enemy and the player
         currentEnemy.setHealth(currentEnemy.getHealth() - damages);
+        player.setHealth(player.getHealth() - damagesTook);
 
+        //print the result of the attack
         console.clearConsole();
         console.printHeading("Battle");
         console.log("You dealt " + damages + " damages to the " + currentEnemy.getName() + " !");
@@ -259,6 +270,7 @@ public class GameLogic {
             enemyDied(currentEnemy);
             inBattle = false;
             return;
+
         }
 
         scanner.anythingToContinue();
@@ -270,6 +282,7 @@ public class GameLogic {
      * @param currentEnemy the enemy that the player is currently fighting
      */
     public void enemyDied(AbstractEnemy currentEnemy) {
+        //check if the enemy is dead
         if (currentEnemy.getHealth() <= 0) {
             console.clearConsole();
             console.printHeading("You killed the " + currentEnemy.getName() + " !");
@@ -388,8 +401,11 @@ public class GameLogic {
         console.clearConsole();
         console.printHeading("Choose an action :");
         console.printSeparator(20);
+        // Option 1: Continue journey
         System.out.println("(1) Continue your journey");
+        // Option 2: Wizard information
         System.out.println("(2) Wizard information");
+        // Option 3: Exit game
         System.out.println("(3) Exit the game");
     }
 
@@ -414,6 +430,7 @@ public class GameLogic {
      * To "instanciate" the final battle
      */
     public void finalBattle() {
+        // Introduce the final boss level
         console.log("You have reached the final boss level, you will now fight against the Dark Lord Voldemort !");
         scanner.anythingToContinue();
 
@@ -425,9 +442,13 @@ public class GameLogic {
 
         scanner.anythingToContinue();
         console.clearConsole();
+
+        // Congratulate the player for defeating the final boss
         console.log("You have defeated the Dark Lord Voldemort !\nYou are now the new Dark Lord of the Wizarding World !");
         scanner.anythingToContinue();
         console.clearConsole();
+
+        // Thank the player for playing the game
         console.log("Thank you for playing Harry Potter At Home !\nMade by Tugdual Audren de Kerdrel");
 
         scanner.close();
@@ -440,10 +461,10 @@ public class GameLogic {
      * Will print the message when the player died
      */
     public void playerDied() {
-        console.clearConsole();
-        console.printHeading("You died !");
-        scanner.close();
-        isRunning = false;
+        console.clearConsole(); // clear the console
+        console.printHeading("You died !"); // print the message "You died !" as a heading
+        scanner.close(); // close the scanner
+        isRunning = false; // set isRunning to false to end the game loop
     }
 
     /**
@@ -452,16 +473,16 @@ public class GameLogic {
      */
     public void gameLoop() {
         while (isRunning) {
-            printMenu();
-            int input = scanner.nextIntInRange(1, 3);
+            printMenu(); // print the game menu
+            int input = scanner.nextIntInRange(1, 3); // get user input
             if (input == 1) {
-                continueJourney();
+                continueJourney(); // continue the journey
             } else if (input == 2) {
-                characterInfo();
+                characterInfo(); // print the character information
             } else {
-                console.log("Thanks for playing my game ! See you soon !");
-                scanner.close();
-                isRunning = false;
+                console.log("Thanks for playing my game ! See you soon !"); // print the exit message
+                scanner.close(); // close the scanner
+                isRunning = false; // set isRunning to false to end the game loop
             }
         }
     }
