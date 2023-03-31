@@ -8,7 +8,7 @@ public class PotionTest {
 
     @Test
     void testNamePotion() {
-        Assertions.assertEquals("Petter Petigrow", potion.getName());
+        Assertions.assertEquals("strength", potion.getName());
     }
 
     @Test

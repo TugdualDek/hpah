@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="modification of the game + maven build possible">
-      <change afterPath="$PROJECT_DIR$/src/test/java/BossTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/EnemyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/HatTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/HouseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PotionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/SpellTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/WandTest.java" afterDir="false" />
+    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="beginning of the unit tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/test/WizardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WizardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/EnemyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EnemyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PotionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PotionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,79 +71,48 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EnemyTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.Main" />
+  <component name="RunManager" selected="JUnit.WizardTest">
+    <configuration name="HouseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hpah" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="kerdrel.tugdual.wizarding.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BossTest.testAttack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hpah" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BossTest" />
-      <option name="METHOD_NAME" value="testAttack" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EnemyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hpah" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="EnemyTest" />
+      <option name="MAIN_CLASS_NAME" value="HouseTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WizardTest.testAttack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PotionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hpah" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="WizardTest" />
-      <option name="METHOD_NAME" value="testAttack" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="PotionTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WizardTest.testDefend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpellTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hpah" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SpellTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WandTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hpah" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="WandTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WizardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hpah" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="WizardTest" />
-      <option name="METHOD_NAME" value="testDefend" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,11 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EnemyTest" />
-        <item itemvalue="JUnit.BossTest.testAttack" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.WizardTest.testAttack" />
-        <item itemvalue="JUnit.WizardTest.testDefend" />
+        <item itemvalue="JUnit.WizardTest" />
+        <item itemvalue="JUnit.WandTest" />
+        <item itemvalue="JUnit.SpellTest" />
+        <item itemvalue="JUnit.PotionTest" />
+        <item itemvalue="JUnit.HouseTest" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +166,7 @@
       <workItem from="1680250277561" duration="209000" />
       <workItem from="1680251171217" duration="113000" />
       <workItem from="1680262618098" duration="2013000" />
-      <workItem from="1680264646245" duration="285000" />
+      <workItem from="1680264646245" duration="485000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -401,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680250477997</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="beginning of the unit tests">
+      <created>1680264949250</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1680264949250</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +390,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="create packages" />
     <MESSAGE value="safeScanner for project" />
     <MESSAGE value="lot of changes" />
     <MESSAGE value="refactoring code" />
@@ -445,7 +414,19 @@
     <MESSAGE value="modificaiton spells" />
     <MESSAGE value="end of the differents levels" />
     <MESSAGE value="modification of the game + maven build possible" />
-    <option name="LAST_COMMIT_MESSAGE" value="modification of the game + maven build possible" />
+    <MESSAGE value="beginning of the unit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="beginning of the unit tests" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/EnemyTest.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

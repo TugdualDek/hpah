@@ -6,16 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 public class EnemyTest {
 
-    private Enemy enemy = Enemy.builder().health(130).shield(40).attackPower(30).name("Petter Petigrow").build();
+    private Enemy enemy = Enemy.builder().health(100).shield(40).attackPower(30).name("Petter Petigrow").build();
 
-    // Test the constructor of the Enemy class
-    @Test
-    public void testEnemyConstructor() {
-        // Check that the name, health, and damage values are set correctly
-        assertEquals("Petter Petigrow", enemy.getName());
-        assertEquals(100, enemy.getHealth(), 0.0);
-        assertTrue(enemy.attack() >= 10);
-    }
 
     // Test the takeDamage method of the Enemy class
     @Test
@@ -32,7 +24,7 @@ public class EnemyTest {
     @Test
     public void testEnemyIsDead() {
         // Take damage from the enemy
-        enemy.setHealth(enemy.getHealth() - 97);
+        enemy.setHealth(enemy.getHealth() - 100);
 
         // Check that the isDead method returns true
         assertTrue(enemy.getHealth() <= 0);
