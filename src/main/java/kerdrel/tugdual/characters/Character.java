@@ -1,5 +1,6 @@
 package kerdrel.tugdual.characters;
 
+
 import kerdrel.tugdual.spells.Spell;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,12 +10,14 @@ import lombok.Setter;
 @Getter
 public abstract class Character {
 
-    protected String name;
-    protected float health;
-    protected float maxHealth;
-    protected float shield;
-    protected float attackPower;
+    // Fields
+    protected String name; // The name of the character
+    protected float health; // The current health of the character
+    protected float maxHealth; // The maximum health of the character
+    protected float shield; // The shield of the character
+    protected float attackPower; // The attack power of the character
 
+    // Constructor
     public Character(String name, float maxHealth, float shield, float attackPower) {
         this.name = name;
         this.maxHealth = maxHealth;
@@ -23,19 +26,19 @@ public abstract class Character {
         this.attackPower = attackPower;
     }
 
+    // Returns true if the character is defeated (health is less than or equal to 0)
     public boolean isDefeated() {
         return health <= 0;
     }
 
-    //
-    // Methods
-    //
-    public abstract float attack();
+    // Abstract methods
+    public abstract float attack(); // Attack method without a spell
 
-    public abstract float attack(Spell spellUsed);
+    public abstract float attack(Spell spellUsed); // Attack method with a spell
 
-    public abstract float defend();
+    public abstract float defend(); // Defend method
 
+    // Private method to take damage and update health
     private void takeDamage(float damage) {
         health -= damage;
         if (health < 0) {
@@ -43,4 +46,3 @@ public abstract class Character {
         }
     }
 }
-
