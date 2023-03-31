@@ -17,6 +17,13 @@ Your goal is to complete your education at Hogwarts. Each year will be full of c
 
 - Finish the game !
 
+## Building the project
+
+To build the project, run the following command
+
+```bash
+  mvn clean install
+```
 
 ## Author
 

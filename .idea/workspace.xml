@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="beginning of the unit tests">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/EnemyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EnemyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PotionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PotionTest.java" afterDir="false" />
+    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="modification of the tests">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +164,7 @@
       <workItem from="1680250277561" duration="209000" />
       <workItem from="1680251171217" duration="113000" />
       <workItem from="1680262618098" duration="2013000" />
-      <workItem from="1680264646245" duration="485000" />
+      <workItem from="1680264646245" duration="908000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -371,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680264949250</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="modification of the tests">
+      <created>1680265181973</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1680265181974</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +395,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="safeScanner for project" />
     <MESSAGE value="lot of changes" />
     <MESSAGE value="refactoring code" />
     <MESSAGE value="beginning of levels and game logic" />
@@ -415,7 +419,8 @@
     <MESSAGE value="end of the differents levels" />
     <MESSAGE value="modification of the game + maven build possible" />
     <MESSAGE value="beginning of the unit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="beginning of the unit tests" />
+    <MESSAGE value="modification of the tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="modification of the tests" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
