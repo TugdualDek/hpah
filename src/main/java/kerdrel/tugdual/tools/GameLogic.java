@@ -6,10 +6,7 @@ import kerdrel.tugdual.ressources.Levels;
 import kerdrel.tugdual.spells.Spell;
 import kerdrel.tugdual.wizarding.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class GameLogic {
 
@@ -36,6 +33,9 @@ public class GameLogic {
     // Battle state variable
     private boolean inBattle = false;
 
+    // instanciate an arraylist of forbidden spells with one called Avada Kedavra
+    private ArrayList<Spell> forbiddenSpells = new ArrayList<>();
+
     //
     // Constructors
     //
@@ -52,6 +52,7 @@ public class GameLogic {
      * Starts the game and show the introduction to the player
      */
     public void startGame() {
+        forbiddenSpells.add(Spell.builder().name("Avada Kedavra").damage(80).build());
         boolean nameSet = false;
         String name;
         console.clearConsole();
@@ -200,11 +201,6 @@ public class GameLogic {
             } else if (input == 3) {
                 //if the player chooses to run away, call the runAway method
                 runAway(currentEnemy, isFinal);
-            } else {
-                //if the player inputs an invalid action, print an error message
-                console.clearConsole();
-                console.printHeading("Invalid input !");
-                scanner.anythingToContinue();
             }
         }
     }
@@ -223,20 +219,44 @@ public class GameLogic {
         }
 
         //the player will choose a spell to attack the enemy
-        int input = scanner.nextIntInRange(1, player.getKnownSpells().length);
+        int input;
 
-        //calculate the damages dealt by the player
-        float damages = player.attack(player.getKnownSpells()[input - 1]) + player.getPet().getAttackPower() - currentEnemy.defend();
-        //calculate the damages taken by the player
-        float damagesTook = currentEnemy.attack() - player.defend() / 2.5f;
+        // check if there is a forbidden spell and if yes, then print the forbidden spell
+        if (forbiddenSpells.size() > 0) {
+            System.out.println("(0) " + forbiddenSpells.get(0).getName());
+            input = scanner.nextIntInRange(0, player.getKnownSpells().length);
+        } else {
+            input = scanner.nextIntInRange(1, player.getKnownSpells().length);
+        }
 
-        //check if the player missed the shot
-        if (new Random().nextInt(100) > player.getPrecision()) {
-            damages = Math.round(damages / new Random().nextInt(10));
-            if (damages < 0) {
-                damages = 0;
+        float damagesTook, damages;
+
+        //if the player chooses the forbidden spell, the enemy will attack the player
+        if (input == 0) {
+            console.log("You used the forbidden spell ! It is forbidden as its name says !");
+            damagesTook = player.getHealth() / 2;
+            damages = 0;
+
+        } else {
+
+            //calculate the damages dealt by the player
+            damages = player.attack(player.getKnownSpells()[input - 1]) + player.getPet().getAttackPower() - currentEnemy.defend();
+            //calculate the damages taken by the player
+            damagesTook = currentEnemy.attack() - player.defend() / 2.5f;
+
+            // check if the spell used is the spellToUse in the levels enum and if yes, then the player will deal *3 damages
+            if (player.getKnownSpells()[input - 1].getName().equals(currentLevel.getSpellToUse())) {
+                damages *= 3;
             }
-            console.log("You barely missed your shot !");
+
+            //check if the player missed the shot
+            if (new Random().nextInt(100) > player.getPrecision()) {
+                damages = Math.round(damages / new Random().nextInt(10));
+                if (damages < 0) {
+                    damages = 0;
+                }
+                console.log("You barely missed your shot !");
+            }
         }
 
         //check if the damages taken by the player are negative
@@ -276,7 +296,7 @@ public class GameLogic {
     }
 
     /**
-     * Class enemydied
+     * Class enemyDied
      *
      * @param currentEnemy the enemy that the player is currently fighting
      */
@@ -418,9 +438,6 @@ public class GameLogic {
         console.log(player.getName() + " stats =>\tHP: " + player.getHealth() + "/" + player.getMaxHealth() + "\tAttack: " + player.getAttackPower() + "\tShield: " + player.getShield());
         console.log("You have " + player.getPotions().size() + " potion(s) in your inventory");
         console.printSeparator(20);
-        //# of pots
-        //System.out.println("# of Potions: " + player.pots);
-        //printSeparator(20);
         scanner.anythingToContinue();
     }
 
@@ -429,6 +446,11 @@ public class GameLogic {
      * To "instanciate" the final battle
      */
     public void finalBattle() {
+
+        // pass the forbidden spell into a normal spell
+        player.setKnownSpells(forbiddenSpells.get(0));
+        forbiddenSpells.remove(0);
+
         // Introduce the final boss level
         console.log("You have reached the final boss level, you will now fight against the Dark Lord Voldemort !");
         scanner.anythingToContinue();
