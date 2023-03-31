@@ -97,7 +97,7 @@ public class GameLogic {
         scanner.anythingToContinue();
 
         // un joueur commence avec 100 points de vie, 20 points de bouclier, 15 points d'attaque, 50% de précision
-        player = Wizard.builder().name(name).health(100 + house.getHealthEfficacity()).shield(20).attackPower(15 + house.getSpellEfficacity()).pet(pet).wand(wand).house(house).precision(50 + house.getPrecisionEfficacity()).build();
+        player = Wizard.builder().name(name).health(150 + house.getHealthEfficacity()).shield(20).attackPower(15 + house.getSpellEfficacity()).pet(pet).wand(wand).house(house).precision(50 + house.getPrecisionEfficacity()).build();
         player.setKnownSpells((Spell) Spell.builder().name("Wingardium Leviosa").damage(10).build());
         isRunning = true;
         gameLoop();
