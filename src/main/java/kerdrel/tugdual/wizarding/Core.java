@@ -1,41 +1,58 @@
 package kerdrel.tugdual.wizarding;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Class Core
+ * This enum represents the different cores that can be used in a wand.
  */
 public enum Core {
 
+    /**
+     * The core made of phoenix feathers.
+     */
     PHOENIX_FEATHER("pheonix feather"),
+
+    /**
+     * The core made of dragon heartstrings.
+     */
     DRAGON_HEARTSTRING("dragon heartstring");
 
+    //
+    // Fields
+    //
 
-  //
-  // Fields
-  //
-  private @Getter String name;
+    /**
+     * The name of the core.
+     */
+    private @Getter String name;
 
-  
-  //
-  // Constructors
-  //
-  Core (String name) {
-    this.name = name;
-  };
-  
-  //
-  // Methods
-  //
+    //
+    // Constructors
+    //
 
+    /**
+     * Creates a new Core with the given name.
+     *
+     * @param name the name of the core
+     */
+    Core(String name) {
+        this.name = name;
+    }
 
-  //
-  // Accessor methods
-  //
+    ;
 
-  //
-  // Other methods
-  //
+    //
+    // Methods
+    //
+
+    //
+    // Accessor methods
+    //
+
+    //
+    // Other methods
+    //
 
 }

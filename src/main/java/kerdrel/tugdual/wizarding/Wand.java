@@ -1,32 +1,44 @@
 package kerdrel.tugdual.wizarding;
 
+
 /**
  * Class Wand
+ * This class represents a wand object used by wizards and witches in the wizarding world.
+ * A wand has a size and a core, which determines its magical properties.
  */
 public class Wand {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
 
-  private int size;
-  private Core core;
-  
-  //
-  // Constructors
-  //
-  public Wand (Core core, int size) {
-    this.core = core;
-    this.size = size;
-  };
-  
-  //
-  // Methods
-  //
+    private int size;
+    private Core core;
+
+    //
+    // Constructors
+    //
+
+    /**
+     * Creates a new Wand object with the given core and size.
+     *
+     * @param core the core of the wand
+     * @param size the size of the wand
+     */
+    public Wand(Core core, int size) {
+        this.core = core;
+        this.size = size;
+    }
+
+    ;
+
+    //
+    // Methods
+    //
 
 
-  //
-  // Accessor methods
+    //
+    // Accessor methods
   //
 
   /**

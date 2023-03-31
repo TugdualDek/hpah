@@ -1,48 +1,33 @@
 package kerdrel.tugdual.wizarding;
 
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Class Potion
+ * Class representing a potion in the wizarding world.
  */
 public class Potion {
 
-  //
-  // Fields
-  //
-  private @Getter
-  @Setter String name;
-  private @Getter
-  @Setter float strength;
-  private @Getter
-  @Setter float shield;
+    // Fields
+    private @Getter
+    @Setter String name; // The name of the potion.
+    private @Getter
+    @Setter float strength; // The strength of the potion.
+    private @Getter
+    @Setter float shield; // The shield provided by the potion.
 
+    // Constructors
+    @Builder
+    public Potion(String name, float strength, float shield) {
+        this.name = name;
+        this.strength = strength;
+        this.shield = shield;
+    }
 
-  //
-  // Constructors
-  //
-  @Builder
-  public Potion(String name, float strength, float shield) {
-    this.name = name;
-    this.strength = strength;
-    this.shield = shield;
-  }
+    // Accessor methods
 
-
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-
-  //
   // Other methods
-  //
 
 }

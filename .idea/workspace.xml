@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="add comments">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/spells/AbstractSpell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/spells/AbstractSpell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/spells/ForbiddenSpell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/spells/ForbiddenSpell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/spells/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/spells/Spell.java" afterDir="false" />
+    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="comments">
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/Console.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/SafeScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/SafeScanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Pet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Potion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/SortingHat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/SortingHat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Wand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/wizarding/Wand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +174,7 @@
       <workItem from="1680262618098" duration="2013000" />
       <workItem from="1680264646245" duration="1108000" />
       <workItem from="1680266028583" duration="203000" />
-      <workItem from="1680266621299" duration="18000" />
+      <workItem from="1680266621299" duration="380000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -395,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680266209957</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="comments">
+      <created>1680266647841</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1680266647841</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,7 +426,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="beginning of levels and game logic" />
     <MESSAGE value="printing text from each levels" />
     <MESSAGE value="refactor levels" />
     <MESSAGE value="Make it English !" />
@@ -439,7 +450,8 @@
     <MESSAGE value="modification of the tests" />
     <MESSAGE value="readme modification" />
     <MESSAGE value="add comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="add comments" />
+    <MESSAGE value="comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="comments" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
