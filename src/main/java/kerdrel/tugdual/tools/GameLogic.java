@@ -97,8 +97,7 @@ public class GameLogic {
                 pet = Pet.values()[new Random().nextInt(Pet.values().length)];
             }
         }
-        console.log("Very good choice, your pet is therefore a " + pet.getName() + "\nWe will now provide you with a wand that will best suit you!");
-        console.log("A wand of type " + wand.getCore().getName() + " and of " + wand.getSize() + "cm has chosen you !");
+        console.log("Very good choice, your pet is therefore a " + pet.getName() + "\nWe will now provide you with a wand that will best suit you!\nA wand of type " + wand.getCore().getName() + " and of " + wand.getSize() + "cm has chosen you !");
         scanner.anythingToContinue();
 
         // The player starts with 150 health points, 20 shield points, 15 attack points, and 50% precision
@@ -246,7 +245,7 @@ public class GameLogic {
             damagesTook = 0;
         }
 
-        //check if the damages dealt bythe player are negative
+        //check if the damages dealt by the player are negative
         if (damages < 0) {
             damages = 0;
         }

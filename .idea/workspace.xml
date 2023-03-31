@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="comments" />
+    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="comments + documentation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +173,7 @@
       <workItem from="1680264646245" duration="1108000" />
       <workItem from="1680266028583" duration="203000" />
       <workItem from="1680266621299" duration="1669000" />
-      <workItem from="1680269634633" duration="319000" />
+      <workItem from="1680269634633" duration="2242000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -416,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680269677793</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="comments + documentation">
+      <created>1680270433331</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1680270433331</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,7 +446,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="printing text from each levels" />
     <MESSAGE value="refactor levels" />
     <MESSAGE value="Make it English !" />
     <MESSAGE value="Modification of the game" />
@@ -460,7 +470,8 @@
     <MESSAGE value="readme modification" />
     <MESSAGE value="add comments" />
     <MESSAGE value="comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="comments" />
+    <MESSAGE value="comments + documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="comments + documentation" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
