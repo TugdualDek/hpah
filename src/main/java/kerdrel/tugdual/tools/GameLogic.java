@@ -44,7 +44,7 @@ public class GameLogic {
 
     /**
      * Method startGame
-     * Starts the game
+     * Starts the game and show the introduction to the player
      */
     public void startGame() {
         boolean nameSet = false;
@@ -172,14 +172,20 @@ public class GameLogic {
 
     }
 
+    /**
+     * Class battle
+     *
+     * @param currentEnemy the enemy that the player will have to fight (boss or enemy)
+     * @param isFinal      chack if this is the final battle
+     */
     private void battle(AbstractEnemy currentEnemy, boolean isFinal) {
         while (inBattle) {
             console.clearConsole();
             console.printHeading(currentEnemy.getName() + "\nHP: " + currentEnemy.getHealth() + "/" + currentEnemy.getMaxHealth());
             console.printHeading(player.getName() + "\nHP: " + player.getHealth() + "/" + player.getMaxHealth());
-            System.out.println("Choose an action :");
+            console.log("Choose an action :");
             console.printSeparator(20);
-            System.out.println("(1) Attack\n(2) Potion\n(3) Run");
+            console.log("(1) Attack\n(2) Potion\n(3) Run");
             int input = scanner.nextIntInRange(1, 3);
 
             if (input == 1) {
@@ -258,6 +264,11 @@ public class GameLogic {
         scanner.anythingToContinue();
     }
 
+    /**
+     * Class enemydied
+     *
+     * @param currentEnemy the enemy that the player is currently fighting
+     */
     public void enemyDied(AbstractEnemy currentEnemy) {
         if (currentEnemy.getHealth() <= 0) {
             console.clearConsole();
@@ -299,6 +310,10 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Class usePotion
+     * This is the class that allows the player to drink a potion during a fight
+     */
     private void usePotion() {
         console.clearConsole();
         List<Potion> potions = player.getPotions();
@@ -328,6 +343,13 @@ public class GameLogic {
         scanner.anythingToContinue();
     }
 
+    /**
+     * Class runAway
+     *
+     * @param currentEnemy the enemy that the player is currently fighting
+     * @param isFinal      check if it is the final battle
+     *                     if it is the final battle, not possible to run away
+     */
     public void runAway(AbstractEnemy currentEnemy, boolean isFinal) {
         console.clearConsole();
 
@@ -387,6 +409,10 @@ public class GameLogic {
         scanner.anythingToContinue();
     }
 
+    /**
+     * Class finalBattle
+     * To "instanciate" the final battle
+     */
     public void finalBattle() {
         console.log("You have reached the final boss level, you will now fight against the Dark Lord Voldemort !");
         scanner.anythingToContinue();
