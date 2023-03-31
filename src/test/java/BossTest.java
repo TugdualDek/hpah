@@ -1,3 +1,6 @@
+/**
+ * This class contains JUnit tests for the Boss class.
+ */
 import kerdrel.tugdual.characters.Boss;
 import org.junit.Test;
 
