@@ -1,11 +1,10 @@
-package kerdrel.tugdual.test;
-
 import kerdrel.tugdual.characters.Wizard;
 import kerdrel.tugdual.wizarding.*;
 import org.junit.Test;
 
 import java.util.Random;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class WizardTest {
@@ -28,5 +27,48 @@ public class WizardTest {
         float defense = wizard.defend();
         assertTrue(defense >= 0);
     }
+
+    @Test
+    public void testGetHealth() {
+        float health = wizard.getHealth();
+        assertTrue(health >= 0);
+    }
+
+    @Test
+    public void testGetShield() {
+        float shield = wizard.getShield();
+        assertTrue(shield >= 0);
+    }
+
+    @Test
+    public void testGetAttackPower() {
+        float attackPower = wizard.getAttackPower();
+        assertTrue(attackPower >= 0);
+    }
+
+    @Test
+    public void testGetPrecision() {
+        float precision = wizard.getPrecision();
+        assertTrue(precision >= 0);
+    }
+
+    @Test
+    public void testGetPet() {
+        Pet pet = wizard.getPet();
+        assertNotNull(pet);
+    }
+
+    @Test
+    public void testGetWand() {
+        Wand wand = wizard.getWand();
+        assertNotNull(wand);
+    }
+
+    @Test
+    public void testGetHouse() {
+        House house = wizard.getHouse();
+        assertNotNull(house);
+    }
+
 
 }

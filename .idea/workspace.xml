@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="end of the differents levels">
+    <list default="true" id="3387aba6-df39-45e0-8dcc-6bfdbf597122" name="Changes" comment="modification of the game + maven build possible">
+      <change afterPath="$PROJECT_DIR$/src/test/java/BossTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/EnemyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/HatTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/HouseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/PotionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/SpellTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/WandTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/tools/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kerdrel/tugdual/test/WizardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WizardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +46,16 @@
     </option>
   </component>
   <component name="ProjectId" id="2Mlmv51YsUZUiRvCadhaSYGFSqn" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -63,7 +72,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.EnemyTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.Main" />
       <module name="hpah" />
@@ -77,16 +91,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WizardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BossTest.testAttack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hpah" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kerdrel.tugdual.test.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="kerdrel.tugdual.test" />
-      <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.test.WizardTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BossTest" />
+      <option name="METHOD_NAME" value="testAttack" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EnemyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hpah" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="EnemyTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -96,12 +126,12 @@
       <module name="hpah" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kerdrel.tugdual.test.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="kerdrel.tugdual.test" />
-      <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.test.WizardTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="WizardTest" />
       <option name="METHOD_NAME" value="testAttack" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -112,12 +142,12 @@
       <module name="hpah" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kerdrel.tugdual.test.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="kerdrel.tugdual.test" />
-      <option name="MAIN_CLASS_NAME" value="kerdrel.tugdual.test.WizardTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="WizardTest" />
       <option name="METHOD_NAME" value="testDefend" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -137,10 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EnemyTest" />
+        <item itemvalue="JUnit.BossTest.testAttack" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.WizardTest.testAttack" />
         <item itemvalue="JUnit.WizardTest.testDefend" />
-        <item itemvalue="JUnit.WizardTest" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +200,10 @@
       <workItem from="1680193620017" duration="60000" />
       <workItem from="1680193839978" duration="1180000" />
       <workItem from="1680250137120" duration="4000" />
-      <workItem from="1680250277561" duration="47000" />
+      <workItem from="1680250277561" duration="209000" />
+      <workItem from="1680251171217" duration="113000" />
+      <workItem from="1680262618098" duration="2013000" />
+      <workItem from="1680264646245" duration="285000" />
     </task>
     <task id="LOCAL-00001" summary="first modifications">
       <created>1678351478207</created>
@@ -360,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680249909222</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="modification of the game + maven build possible">
+      <created>1680250477997</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1680250477997</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +419,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="how to use Lombok" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="create packages" />
     <MESSAGE value="safeScanner for project" />
     <MESSAGE value="lot of changes" />
@@ -403,7 +444,8 @@
     <MESSAGE value="Beginning of spells" />
     <MESSAGE value="modificaiton spells" />
     <MESSAGE value="end of the differents levels" />
-    <option name="LAST_COMMIT_MESSAGE" value="end of the differents levels" />
+    <MESSAGE value="modification of the game + maven build possible" />
+    <option name="LAST_COMMIT_MESSAGE" value="modification of the game + maven build possible" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
